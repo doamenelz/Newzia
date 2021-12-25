@@ -48,7 +48,8 @@ struct ForgotPasswordScreen: View {
                 
                 Spacer()
                 
-                Button(action: {
+                
+                                Button(action: {
                     
                     if !checkEntry {
                         checkEntry.toggle()

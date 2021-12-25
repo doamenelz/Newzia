@@ -11,17 +11,28 @@ struct NavigationHeader: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    var title : String?
     
     var body: some View {
-        HStack {
+        
+        ZStack {
             
-            Image(systemName: SystemIcons.arrowRight.rawValue)
-                .padding(.vertical)
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
-                }
+            HStack {
+                
+                Image(systemName: SystemIcons.arrowRight.rawValue)
+                    .padding(.vertical)
+                    .onTapGesture {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                
+                Spacer()
+            }
             
-            Spacer()            
+            if title != nil {
+                Text(title!)
+                    .modifier(FontModifier(color: .cBlueDark, size: .body, type: .bold))
+            }
+            
         }
     }
 }

@@ -46,6 +46,16 @@
 		490B05A727763BED00A761F7 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05A627763BED00A761F7 /* ResetPasswordViewModel.swift */; };
 		490B05AA2776411E00A761F7 /* VerificationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05A92776411E00A761F7 /* VerificationStack.swift */; };
 		490B05AC2776415200A761F7 /* UpdatePasswordStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05AB2776415200A761F7 /* UpdatePasswordStack.swift */; };
+		490B05B2277651C800A761F7 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05B1277651C700A761F7 /* Countries.swift */; };
+		490B05B427765BE500A761F7 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 490B05B327765BE500A761F7 /* countries.json */; };
+		490B05B627765DBC00A761F7 /* CountrySetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05B527765DBC00A761F7 /* CountrySetupScreen.swift */; };
+		490B05B92776B7FB00A761F7 /* AccountSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05B82776B7FA00A761F7 /* AccountSetupViewModel.swift */; };
+		490B05BB2776CCF400A761F7 /* SourcesSetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05BA2776CCF300A761F7 /* SourcesSetupScreen.swift */; };
+		490B05BD2776CEAE00A761F7 /* CategoriesSetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05BC2776CEAE00A761F7 /* CategoriesSetupScreen.swift */; };
+		490B05BF2776D45A00A761F7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05BE2776D45A00A761F7 /* Category.swift */; };
+		490B05C12776DDDE00A761F7 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05C02776DDDE00A761F7 /* Gradients.swift */; };
+		490B05C32776E9C400A761F7 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05C22776E9C400A761F7 /* BlurView.swift */; };
+		490B05C52776ED1500A761F7 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05C42776ED1500A761F7 /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +119,16 @@
 		490B05A627763BED00A761F7 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		490B05A92776411E00A761F7 /* VerificationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationStack.swift; sourceTree = "<group>"; };
 		490B05AB2776415200A761F7 /* UpdatePasswordStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordStack.swift; sourceTree = "<group>"; };
+		490B05B1277651C700A761F7 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		490B05B327765BE500A761F7 /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		490B05B527765DBC00A761F7 /* CountrySetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySetupScreen.swift; sourceTree = "<group>"; };
+		490B05B82776B7FA00A761F7 /* AccountSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetupViewModel.swift; sourceTree = "<group>"; };
+		490B05BA2776CCF300A761F7 /* SourcesSetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesSetupScreen.swift; sourceTree = "<group>"; };
+		490B05BC2776CEAE00A761F7 /* CategoriesSetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSetupScreen.swift; sourceTree = "<group>"; };
+		490B05BE2776D45A00A761F7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		490B05C02776DDDE00A761F7 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		490B05C22776E9C400A761F7 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		490B05C42776ED1500A761F7 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +187,7 @@
 				490B0562277571F700A761F7 /* Views */,
 				490B0563277571FE00A761F7 /* ViewModel */,
 				490B05352775718A00A761F7 /* NewsAPIApp.swift */,
+				490B05B327765BE500A761F7 /* countries.json */,
 				490B05372775718A00A761F7 /* ContentView.swift */,
 				490B05392775718C00A761F7 /* Assets.xcassets */,
 				490B053B2775718C00A761F7 /* Preview Content */,
@@ -206,6 +227,8 @@
 				490B0565277575D400A761F7 /* Colors.swift */,
 				490B05672775773800A761F7 /* Assets.swift */,
 				490B058F27759E9100A761F7 /* Icons.swift */,
+				490B05C02776DDDE00A761F7 /* Gradients.swift */,
+				490B05C22776E9C400A761F7 /* BlurView.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -223,6 +246,8 @@
 		490B0561277571F100A761F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				490B05B0277651B700A761F7 /* AppData */,
+				490B05AF277651A900A761F7 /* Countries */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +266,7 @@
 		490B0563277571FE00A761F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				490B05B72776B7D900A761F7 /* Profile */,
 				490B05872775861C00A761F7 /* IntroScreens */,
 				490B05972775B36E00A761F7 /* Login */,
 				490B05AD2776419400A761F7 /* ForgotPassword */,
@@ -333,8 +359,36 @@
 		490B05AE277647F900A761F7 /* SetupAccount */ = {
 			isa = PBXGroup;
 			children = (
+				490B05B527765DBC00A761F7 /* CountrySetupScreen.swift */,
+				490B05BA2776CCF300A761F7 /* SourcesSetupScreen.swift */,
+				490B05BC2776CEAE00A761F7 /* CategoriesSetupScreen.swift */,
+				490B05C42776ED1500A761F7 /* CategoryCell.swift */,
 			);
 			path = SetupAccount;
+			sourceTree = "<group>";
+		};
+		490B05AF277651A900A761F7 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
+		490B05B0277651B700A761F7 /* AppData */ = {
+			isa = PBXGroup;
+			children = (
+				490B05B1277651C700A761F7 /* Countries.swift */,
+				490B05BE2776D45A00A761F7 /* Category.swift */,
+			);
+			path = AppData;
+			sourceTree = "<group>";
+		};
+		490B05B72776B7D900A761F7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				490B05B82776B7FA00A761F7 /* AccountSetupViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +501,7 @@
 				490B053D2775718C00A761F7 /* Preview Assets.xcassets in Resources */,
 				490B058227757E9500A761F7 /* Montserrat-SemiBold.ttf in Resources */,
 				490B057F27757E9500A761F7 /* Montserrat-ExtraLight.ttf in Resources */,
+				490B05B427765BE500A761F7 /* countries.json in Resources */,
 				490B057B27757E9500A761F7 /* Montserrat-ExtraBold.ttf in Resources */,
 				490B057C27757E9500A761F7 /* Montserrat-Medium.ttf in Resources */,
 				490B053A2775718C00A761F7 /* Assets.xcassets in Resources */,
@@ -479,22 +534,31 @@
 				490B05922775A65000A761F7 /* LoginScreen.swift in Sources */,
 				490B05A12776321800A761F7 /* ForgotPasswordScreen.swift in Sources */,
 				490B058527757EA800A761F7 /* Fonts.swift in Sources */,
+				490B05BF2776D45A00A761F7 /* Category.swift in Sources */,
 				490B05AA2776411E00A761F7 /* VerificationStack.swift in Sources */,
 				490B05A32776348800A761F7 /* ForgotPasswordViewModel.swift in Sources */,
 				490B056C277577E000A761F7 /* SplashScreen.swift in Sources */,
+				490B05B2277651C800A761F7 /* Countries.swift in Sources */,
 				490B059027759E9100A761F7 /* Icons.swift in Sources */,
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
 				490B05992775B38700A761F7 /* SignInViewModel.swift in Sources */,
+				490B05C12776DDDE00A761F7 /* Gradients.swift in Sources */,
 				490B05A727763BED00A761F7 /* ResetPasswordViewModel.swift in Sources */,
+				490B05BD2776CEAE00A761F7 /* CategoriesSetupScreen.swift in Sources */,
+				490B05BB2776CCF400A761F7 /* SourcesSetupScreen.swift in Sources */,
 				490B05892775863000A761F7 /* ProductTourViewModel.swift in Sources */,
+				490B05B92776B7FB00A761F7 /* AccountSetupViewModel.swift in Sources */,
+				490B05C52776ED1500A761F7 /* CategoryCell.swift in Sources */,
 				490B05962775ACC200A761F7 /* TextFields.swift in Sources */,
 				490B05382775718A00A761F7 /* ContentView.swift in Sources */,
 				490B0566277575D400A761F7 /* Colors.swift in Sources */,
+				490B05B627765DBC00A761F7 /* CountrySetupScreen.swift in Sources */,
 				490B059B2775B78E00A761F7 /* SignInStack.swift in Sources */,
 				490B058B277596D400A761F7 /* Buttons.swift in Sources */,
 				490B057027757AB300A761F7 /* ProductTourScreen.swift in Sources */,
 				490B05A52776380200A761F7 /* CodeVerificationScreen.swift in Sources */,
 				490B058E2775987700A761F7 /* LoginOptionScreen.swift in Sources */,
+				490B05C32776E9C400A761F7 /* BlurView.swift in Sources */,
 				490B05942775A6A800A761F7 /* NavigationHeader.swift in Sources */,
 				490B05682775773800A761F7 /* Assets.swift in Sources */,
 				490B05362775718A00A761F7 /* NewsAPIApp.swift in Sources */,
