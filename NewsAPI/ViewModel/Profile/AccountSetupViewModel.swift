@@ -7,6 +7,11 @@
 
 import Foundation
 import Combine
+import UIKit
+import SwiftUI
+
+
+//TODO: Sort Sources List by selected Country
 
 class AccountSetupViewModel : ObservableObject {
     
@@ -14,5 +19,25 @@ class AccountSetupViewModel : ObservableObject {
     
     @Published var selectedCategories : [Category] = []
     
+    @Published var selectedSources : [Source] = []
+    
+    @Published var username : String = ""
+    
+    @Published var avatar : UIImage?
+    
+    @Published var name : String = "Edem Ekeng"
+    
+    @Published var persistCompleted : Bool = false
+    
+    func persistUserProfile () {
+        
+        
+        
+        
+        
+    }
     
 }
+
+
+

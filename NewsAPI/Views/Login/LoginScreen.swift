@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginScreen: View {
     
+    @EnvironmentObject var userProfile : UserProfile
+    
     @State private var onSignIn : Bool = false
     @State private var email : String = ""
     
@@ -51,6 +53,7 @@ struct LoginScreen: View {
             }
             .padding()
         }
+        .environmentObject(userProfile)
         .hideNavigationBar()
     }
 }

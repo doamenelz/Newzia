@@ -33,7 +33,7 @@ enum SystemIcons : String {
     case income = "bag.fill"
     case ellipsis = "ellipsis"
     case info =  "info.circle.fill"
-    case person = "person.circle"
+    case person = "person.crop.circle"
     case recur = "arrow.2.squarepath"
     case clearText = "xmark.circle.fill"
     case update = "tray.and.arrow.up.fill"
@@ -55,6 +55,7 @@ enum SystemIcons : String {
     case eye = "eye.fill"
     case mail = "envelope"
     case lock = "lock"
+    case newsIconPlaceholder = "newspaper.circle.fill"
 }
 
 enum CustomIcons : String {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginOptionScreen: View {
     
+    @EnvironmentObject var userProfile : UserProfile
     @Binding var dismiss : Bool
     
     var body: some View {
@@ -99,6 +100,7 @@ struct LoginOptionScreen: View {
                 }
                 .padding()
             }
+            .environmentObject(userProfile)
             .hideNavigationBar()
         }
     }

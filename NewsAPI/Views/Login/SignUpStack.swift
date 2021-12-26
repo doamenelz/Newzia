@@ -9,9 +9,14 @@ import SwiftUI
 
 struct SignUpStack: View {
     
+    @EnvironmentObject var userProfile : UserProfile
+    
+    
     @ObservedObject var viewModel : SignUpViewModel
     
     @State private var checkEntry : Bool = false
+    
+    @State private var goToCountrySetUp : Bool = false
     
     var body: some View {
         VStack {
@@ -66,6 +71,14 @@ struct SignUpStack: View {
                 
                 Button(action: {
                     
+                    DispatchQueue.main.async {
+                        userProfile.name = viewModel.name
+                        userProfile.email = viewModel.email
+                    }
+                    
+                    goToCountrySetUp.toggle()
+                    
+                    
                 }, label: {
                     CTA(label: "Sign Up")
                 })
@@ -90,9 +103,16 @@ struct SignUpStack: View {
                 
             }
             
-            
+            NavigationLink(isActive: $goToCountrySetUp, destination: {
+                
+                CountrySetupScreen()
+                
+            }, label: {
+                EmptyView()
+            })
             
         }
+        .environmentObject(userProfile)
     }
 }
 

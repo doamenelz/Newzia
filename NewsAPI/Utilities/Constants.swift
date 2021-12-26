@@ -17,4 +17,7 @@ struct K {
         static let buttonHeight : CGFloat = 48
     }
 
+    struct URLs {
+        static let clearBit : String = "https://logo.clearbit.com/"
+    }
 }

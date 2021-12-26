@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var userProfile = UserProfile()
+    
     var body: some View {
-        CategoriesSetupScreen(viewModel: AccountSetupViewModel())
+        ProductTourScreen()
+            .environmentObject(userProfile)
     }
 }
 

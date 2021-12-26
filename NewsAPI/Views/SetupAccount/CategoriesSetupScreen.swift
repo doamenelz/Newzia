@@ -13,14 +13,17 @@ struct CategoriesSetupScreen: View {
     
     @State private var search : String = ""
     
+    
     let columns = [
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
     
     var body: some View {
+        
         ZStack {
             Color.cWhite
+                
              
             VStack {
                 NavigationHeader(title: "Follow Categories")
@@ -28,7 +31,9 @@ struct CategoriesSetupScreen: View {
                 IconTextField(icon: .search, placeHolder: "Search for a Category", text: $search, isMandatory: false, errorMessage: "", checkEntry: false)
                 
                 ScrollView (showsIndicators: false) {
+                    
                     LazyVGrid(columns: columns, spacing: 10, content: {
+                        
                         ForEach(search != "" ? Category.categories.filter({$0.type.rawValue.uppercased().contains(search.uppercased())}) : Category.categories) { category in
 
                             CategoryCell(category: category, isSelected: viewModel.selectedCategories.contains(where: {$0.type == category.type}) ? true : false)
@@ -52,17 +57,20 @@ struct CategoriesSetupScreen: View {
                         }
                     })
                         .padding(.bottom, 60)
-
+                    
                 }
                 
                 
             }
             .padding()
             
+            
+            
             VStack {
                 Spacer()
                 
                 NavigationLink(destination: {
+                    SourcesSetupScreen(viewModel: viewModel)
                     
                 }, label: {
                     
@@ -77,6 +85,7 @@ struct CategoriesSetupScreen: View {
             }
             .edgesIgnoringSafeArea(.bottom)
         }
+        .hideNavigationBar()
     }
     
 }

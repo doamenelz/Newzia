@@ -14,9 +14,11 @@ import SwiftUI
 struct SignInStack: View {
     
     @ObservedObject var viewModel : SignInViewModel
+    
     @State private var checkEntry : Bool = false
     
     @State private var goToNext : Bool = false
+    
     @State private var forgotPasswordToggled : Bool = false
     
     var body: some View {
@@ -82,6 +84,14 @@ struct SignInStack: View {
             }, label: {
                 EmptyView()
             })
+            
+            NavigationLink(isActive: $goToNext, destination: {
+                CountrySetupScreen()
+            }, label: {
+                EmptyView()
+            })
+            
+            
             
             
         }

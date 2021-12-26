@@ -66,7 +66,7 @@ struct CountrySetupScreen: View {
                 Spacer()
                 
                 NavigationLink(destination: {
-                    
+                    CategoriesSetupScreen(viewModel: viewModel)
                 }, label: {
                     
                     CTA(label: "Next")
