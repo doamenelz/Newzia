@@ -65,6 +65,8 @@
 		490B05D42778205100A761F7 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05D32778205100A761F7 /* Animations.swift */; };
 		490B05D7277829B700A761F7 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05D6277829B700A761F7 /* UserProfile.swift */; };
 		490B05D927782C9600A761F7 /* SetupCompleteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */; };
+		490B05DC2778429000A761F7 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05DB2778429000A761F7 /* CategoriesList.swift */; };
+		490B05DF277842EE00A761F7 /* SourcesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05DE277842EE00A761F7 /* SourcesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,8 @@
 		490B05D32778205100A761F7 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		490B05D6277829B700A761F7 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCompleteScreen.swift; sourceTree = "<group>"; };
+		490B05DB2778429000A761F7 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
+		490B05DE277842EE00A761F7 /* SourcesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,12 +385,9 @@
 			isa = PBXGroup;
 			children = (
 				490B05B527765DBC00A761F7 /* CountrySetupScreen.swift */,
-				490B05CA2777BBD100A761F7 /* SourcesCell.swift */,
-				490B05BA2776CCF300A761F7 /* SourcesSetupScreen.swift */,
-				490B05C42776ED1500A761F7 /* CategoryCell.swift */,
-				490B05BC2776CEAE00A761F7 /* CategoriesSetupScreen.swift */,
-				490B05CF2777D21600A761F7 /* ProfileSetupScreen.swift */,
-				490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */,
+				490B05DA2778426800A761F7 /* Categories */,
+				490B05DD277842AC00A761F7 /* Sources */,
+				490B05E02778430B00A761F7 /* Profile */,
 			);
 			path = SetupAccount;
 			sourceTree = "<group>";
@@ -415,6 +416,35 @@
 				490B05D6277829B700A761F7 /* UserProfile.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		490B05DA2778426800A761F7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				490B05C42776ED1500A761F7 /* CategoryCell.swift */,
+				490B05DB2778429000A761F7 /* CategoriesList.swift */,
+				490B05BC2776CEAE00A761F7 /* CategoriesSetupScreen.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		490B05DD277842AC00A761F7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				490B05CA2777BBD100A761F7 /* SourcesCell.swift */,
+				490B05DE277842EE00A761F7 /* SourcesList.swift */,
+				490B05BA2776CCF300A761F7 /* SourcesSetupScreen.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		490B05E02778430B00A761F7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				490B05CF2777D21600A761F7 /* ProfileSetupScreen.swift */,
+				490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,8 +597,10 @@
 				490B05922775A65000A761F7 /* LoginScreen.swift in Sources */,
 				490B05C92777B95B00A761F7 /* Sources.swift in Sources */,
 				490B05A12776321800A761F7 /* ForgotPasswordScreen.swift in Sources */,
+				490B05DC2778429000A761F7 /* CategoriesList.swift in Sources */,
 				490B058527757EA800A761F7 /* Fonts.swift in Sources */,
 				490B05CB2777BBD200A761F7 /* SourcesCell.swift in Sources */,
+				490B05DF277842EE00A761F7 /* SourcesList.swift in Sources */,
 				490B05BF2776D45A00A761F7 /* Category.swift in Sources */,
 				490B05AA2776411E00A761F7 /* VerificationStack.swift in Sources */,
 				490B05D22778117300A761F7 /* ImagePicker.swift in Sources */,

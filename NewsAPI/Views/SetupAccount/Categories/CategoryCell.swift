@@ -52,7 +52,7 @@ struct CategoryCell: View {
         .cornerRadius(30)
         
         .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous) .strokeBorder(lineWidth: 5).foregroundColor(isSelected ? .cRed : .clear))
-        
+        .padding(.vertical, 10)
     }
 }
 

@@ -25,29 +25,7 @@ struct CountrySetupScreen: View {
                 
                 IconTextField(icon: .search, placeHolder: "Search Country", text: $search, isMandatory: false, errorMessage: "", checkEntry: false)
                 
-                ScrollView {
-                    
-                    LazyVStack (alignment: .leading) {
-                        
-                        Text("What is your country?")
-                            .modifier(FontModifier(color: .cBlueDark, size: .large, type: .bold))
-                            .padding(.top)
-                        
-                        ForEach (search == "" ? countryClass.countries : countryClass.countries.filter({$0.name.uppercased().contains(search.uppercased())}), id: \.self) { country in
-                            
-                            Button(action: {
-                                
-                                withAnimation {
-                                    viewModel.selectedCountry = country
-                                }
-                                
-                            }, label: {
-                                CountryCell(country: country, isSelected: country.code == viewModel.selectedCountry?.code ? true : false)
-                            })
-                        }
-                        
-                    }
-                }
+                CountryList(viewModel: viewModel, countryClass: countryClass, search: $search)
                 
             }
             .padding()
@@ -62,21 +40,7 @@ struct CountrySetupScreen: View {
             })
             
             
-            VStack {
-                Spacer()
-                
-                NavigationLink(destination: {
-                    CategoriesSetupScreen(viewModel: viewModel)
-                }, label: {
-                    
-                    CTA(label: "Next")
-                        .opacity(viewModel.selectedCountry != nil ? 1 : 0.8)
-                    
-                })
-                    .disabled(viewModel.selectedCountry != nil ? false : true)
-                    
-            }
-            .padding(.horizontal)
+            NextCTA(viewModel: viewModel)
         }
         .hideNavigationBar()
     }
@@ -89,6 +53,10 @@ struct CountrySetupScreen_Previews: PreviewProvider {
     }
 }
 
+
+
+
+//MARK: - Internal Components -
 fileprivate struct CountryCell: View {
     
     var country : Country
@@ -118,5 +86,63 @@ fileprivate struct CountryCell: View {
         .padding()
         .background(isSelected ? Color.cBlueDark : .clear)
         .cornerRadius(17)
+    }
+}
+
+fileprivate struct NextCTA: View {
+    
+    @ObservedObject var viewModel : AccountSetupViewModel
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            
+            NavigationLink(destination: {
+                CategoriesSetupScreen(viewModel: viewModel)
+            }, label: {
+                
+                CTA(label: "Next")
+                    .opacity(viewModel.selectedCountry != nil ? 1 : 0.8)
+                
+            })
+                .disabled(viewModel.selectedCountry != nil ? false : true)
+            
+        }
+        .padding(.horizontal)
+    }
+}
+
+fileprivate struct CountryList: View {
+    
+    @ObservedObject var viewModel : AccountSetupViewModel
+    
+    @ObservedObject var countryClass : CountryModel
+    
+    @Binding var search : String
+    
+    var body: some View {
+        ScrollView {
+            
+            LazyVStack (alignment: .leading) {
+                
+                Text("What is your country?")
+                    .modifier(FontModifier(color: .cBlueDark, size: .large, type: .bold))
+                    .padding(.top)
+                
+                ForEach (search == "" ? countryClass.countries : countryClass.countries.filter({$0.name.uppercased().contains(search.uppercased())}), id: \.self) { country in
+                    
+                    Button(action: {
+                        
+                        withAnimation {
+                            viewModel.selectedCountry = country
+                        }
+                        
+                    }, label: {
+                        CountryCell(country: country, isSelected: country.code == viewModel.selectedCountry?.code ? true : false)
+                    })
+                }
+                
+            }
+        }
     }
 }
