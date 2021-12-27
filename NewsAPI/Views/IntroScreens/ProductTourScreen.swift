@@ -15,6 +15,8 @@ struct ProductTourScreen: View {
     
     var body: some View {
         ZStack {
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
+            
             VStack {
                 HStack {
                         Image(AppAssets.SplashScreen.text)
@@ -144,7 +146,7 @@ fileprivate struct ProgressBar: View {
     
     var body: some View {
         ZStack {
-            Color.cWhite.opacity(0.4)
+            Color.cGrey.opacity(0.4)
                 .frame(width: K.Dimensions.frameWidth * 0.3)
             HStack {
                 Color.cRed

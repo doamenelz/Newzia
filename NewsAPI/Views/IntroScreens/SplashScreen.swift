@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashScreen: View {
     var body: some View {
         ZStack {
-            Color.cWhite
+            Color.whiteRed
             VStack {
                 Spacer()
                 Image(AppAssets.SplashScreen.icon)

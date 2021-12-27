@@ -20,7 +20,7 @@ struct SourcesSetupScreen: View {
     var body: some View {
         ZStack {
             
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             VStack {
                 
                 NavigationHeader(title: "Select Sources")
@@ -68,7 +68,7 @@ fileprivate struct NextCTA: View {
                 
             }, label: {
                 
-                CTA(label: "Next")
+                CTARed(label: "Next")
                     .opacity(viewModel.selectedCategories.isEmpty ? 0.95 : 1)
                 
             })

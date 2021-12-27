@@ -26,7 +26,7 @@ struct UpdatePasswordStack: View {
                     Text("Update")
                     Text("Password")
                 }
-                .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                 
                 Spacer()
             }
@@ -42,7 +42,7 @@ struct UpdatePasswordStack: View {
             Button(action: {
                 
             }, label: {
-                CTA(label: "Submit")
+                CTARed(label: "Submit")
             })
             
             

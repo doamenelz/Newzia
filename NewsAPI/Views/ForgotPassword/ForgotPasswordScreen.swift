@@ -18,7 +18,7 @@ struct ForgotPasswordScreen: View {
     
     var body: some View {
         ZStack {
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             VStack (alignment: .leading, spacing: 20) {
                 NavigationHeader()
                 
@@ -38,10 +38,10 @@ struct ForgotPasswordScreen: View {
                         Text("Forgot")
                         Text("Password")
                     }
-                    .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                    .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                     
                     Text("Enter your email address to reset your password")
-                        .modifier(FontModifier(color: .cBlueMedium, size: .body, type: .medium))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .medium))
                     
                     IconTextField(icon: .mail, placeHolder: "Email", text: $viewModel.email, isMandatory: true, errorMessage: "Enter a valid email", checkEntry: checkEntry)
                 }
@@ -49,7 +49,7 @@ struct ForgotPasswordScreen: View {
                 Spacer()
                 
                 
-                                Button(action: {
+                Button(action: {
                     
                     if !checkEntry {
                         checkEntry.toggle()
@@ -61,7 +61,7 @@ struct ForgotPasswordScreen: View {
                     
                     
                 }, label: {
-                    CTA(label: "Next")
+                    CTARed(label: "Next")
                 })
                 
                 NavigationLink(isActive: $goToNext, destination: {
@@ -78,6 +78,6 @@ struct ForgotPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordScreen()
+        ForgotPasswordScreen().preferredColorScheme(.dark)
     }
 }

@@ -20,13 +20,13 @@ struct SourcesCell: View {
             HStack {
                 Spacer()
                 Image(systemName: isSelected ? SystemIcons.selectedCheckbox.rawValue : SystemIcons.deselectedCheckbox.rawValue)
-                    .foregroundColor(isSelected ? .cRed : .cGreyMedium)
-                    .background(isSelected ? .clear : .cGreyMedium)
+                    .foregroundColor(isSelected ? .cRed : .greyBlueMedium)
+                    //.background(isSelected ? .clear : .greyLBlueMedDark)
                     .cornerRadius(5)
                 
             }
             Spacer()
-            WebImage(url: URL(string: K.URLs.clearBit + source.url), isAnimating: .constant(false))
+            WebImage(url: URL(string: K.URLs.clearBit + source.url))
                 .resizable()
                 .placeholder(Image(systemName: SystemIcons.newsIconPlaceholder.rawValue))
                 .foregroundColor(.cBlueMedium)
@@ -43,7 +43,7 @@ struct SourcesCell: View {
         }
         .padding()
         .frame(width: K.Dimensions.frameWidth / 2.5, height: K.Dimensions.frameHeight / 4.5)
-        .background(Color.cGrey)
+        .background(Color.greyLBlueMedDark)
         
         .cornerRadius(30)
         

@@ -24,7 +24,7 @@ struct ProfileSetupScreen: View {
     
     var body: some View {
         ZStack {
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             
             VStack (spacing: 30) {
                 
@@ -48,8 +48,8 @@ struct ProfileSetupScreen: View {
                 } else {
                     Image(systemName: SystemIcons.person.rawValue)
                         .resizable()
-                        .foregroundColor(.cGreyMedium)
-                        .background(Color.cBlueMedium)
+                        .foregroundColor(.greyBlueMedium)
+                        .background(Color.greyLBlueMedDark)
                         .frame(width: K.Dimensions.frameWidth / 3, height: K.Dimensions.frameWidth / 3)
                         .clipShape(Circle())
                         .onTapGesture {
@@ -81,7 +81,7 @@ struct ProfileSetupScreen: View {
                     
                     
                 }, label: {
-                    CTA(label: "Submit")
+                    CTARed(label: "Submit")
                 })
                     .disabled(submit ? true : false)
                 
@@ -96,7 +96,6 @@ struct ProfileSetupScreen: View {
                         userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-                            print(userProfile.sources)
                             withAnimation {
                                 goToCompletion.toggle()
                             }

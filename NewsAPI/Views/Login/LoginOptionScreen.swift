@@ -15,7 +15,7 @@ struct LoginOptionScreen: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.cWhite
+                Color.whiteBlueDark
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {

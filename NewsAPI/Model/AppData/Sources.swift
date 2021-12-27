@@ -35,11 +35,9 @@ class SourcesModel : ObservableObject {
     private func readLocalFile(forName name: String) -> Data? {
         do {
             if let filePath = Bundle.main.path(forResource: name, ofType: "json") {
-                        let fileUrl = URL(fileURLWithPath: filePath)
-                        let data = try Data(contentsOf: fileUrl)
-                print(filePath)
-                print(data)
-                        return data
+                let fileUrl = URL(fileURLWithPath: filePath)
+                let data = try Data(contentsOf: fileUrl)
+                return data
                     }
         } catch {
             print(error)
@@ -53,12 +51,11 @@ class SourcesModel : ObservableObject {
         do {
             let decodedData = try JSONDecoder().decode([Source].self,
                                                        from: jsonData)
- 
+            
             
             sources = decodedData
             
         } catch {
-            print("decode error")
             print(error)
             
         }

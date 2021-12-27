@@ -19,7 +19,7 @@ struct LoginScreen: View {
     
     var body: some View {
         ZStack {
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             VStack {
                 NavigationHeader()
                 

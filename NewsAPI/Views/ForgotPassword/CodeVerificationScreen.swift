@@ -15,7 +15,7 @@ struct CodeVerificationScreen: View {
     var body: some View {
         ZStack {
             
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             
             VStack  {
                 
@@ -37,7 +37,7 @@ struct CodeVerificationScreen: View {
 
 struct CodeVerificationScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CodeVerificationScreen()
+        CodeVerificationScreen().preferredColorScheme(.dark)
     }
 }
 

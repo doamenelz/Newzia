@@ -13,12 +13,12 @@ struct SetupCompleteScreen: View {
     
     var body: some View {
         ZStack {
-            Color.cWhite
+            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             
             VStack (spacing: 60) {
                 
                 Text("You're all set!!")
-                    .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                    .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                     .padding(.top, 40)
                 
                 
@@ -29,9 +29,9 @@ struct SetupCompleteScreen: View {
                         .modifier(ProfileAvatarModifier())
                     
                     Text(userProfile.name)
-                        .modifier(FontModifier(color: .cBlueDark, size: .body, type: .medium))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .medium))
                     Text("@\(userProfile.username)")
-                        .modifier(FontModifier(color: .cBlueMedium, size: .label, type: .medium))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .medium))
                 }
                 
                 Spacer()
@@ -40,7 +40,7 @@ struct SetupCompleteScreen: View {
                 Button(action: {
                     
                 }, label: {
-                    CTA(label: "Home")
+                    CTARed(label: "Home")
                 })
                 
             }

@@ -26,7 +26,7 @@ struct SignUpStack: View {
                     Text("Create")
                     Text("an account")
                 }
-                .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                 
                 Spacer()
             }
@@ -80,7 +80,7 @@ struct SignUpStack: View {
                     
                     
                 }, label: {
-                    CTA(label: "Sign Up")
+                    CTARed(label: "Sign Up")
                 })
                 
                 

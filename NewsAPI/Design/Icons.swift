@@ -50,7 +50,7 @@ enum SystemIcons : String {
     case filter = "slider.horizontal.3"
     case list = "list.dash"
     case selectedCheckbox = "checkmark.square.fill"
-    case deselectedCheckbox = "square"
+    case deselectedCheckbox = "square.fill"
     case delete = "xmark.bin.fill"
     case eye = "eye.fill"
     case mail = "envelope"

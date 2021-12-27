@@ -26,14 +26,29 @@ struct CTA: View {
     
     var body: some View {
         Text(label)
-            .modifier(FontModifier(color: .cWhite, size: .body, type: .regular))
+            .modifier(FontModifier(color: .white, size: .body, type: .regular))
             .padding()
-        
+            .frame(maxWidth: .infinity)
+            .background(Color.redBlueMedium)
+            .cornerRadius(K.Dimensions.buttonCornerRadius)
+    }
+}
+
+
+struct CTARed: View {
+    
+    var label : String
+    
+    var body: some View {
+        Text(label)
+            .modifier(FontModifier(color: .white, size: .body, type: .regular))
+            .padding()
             .frame(maxWidth: .infinity)
             .background(Color.cRed)
             .cornerRadius(K.Dimensions.buttonCornerRadius)
     }
 }
+
 
 struct CTAwIcon: View {
     
@@ -51,7 +66,7 @@ struct CTAwIcon: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(primary ? Color.cRed : Color.cGreyMedium)
+        .background(primary ? Color.cRed : Color.greyBlueMedium)
         .cornerRadius(K.Dimensions.buttonCornerRadius)
     }
 }
@@ -63,10 +78,10 @@ struct SmallButton: View {
     
     var body: some View {
         Text(label)
-            .modifier(FontModifier(color: isSelected ? .cWhite : .cBlueDark, size: .body, type: .medium))
+            .modifier(FontModifier(color: isSelected ? .cWhite : .darkGreySoft, size: .body, type: .medium))
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(isSelected ? Color.cBlueDark : Color.cWhite)
+            .background(isSelected ? Color.blueRed : Color.clear)
             .cornerRadius(26)
     }
 }

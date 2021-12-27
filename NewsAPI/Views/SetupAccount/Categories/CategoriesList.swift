@@ -32,10 +32,8 @@ struct CategoriesList: View {
                             withAnimation {
                                 if !viewModel.selectedCategories.contains(where: {$0.type == category.type}) {
                                     viewModel.selectedCategories.append(category)
-                                    print(viewModel.selectedCategories)
                                 } else {
                                     viewModel.selectedCategories.removeAll(where: {$0.type == category.type})
-                                    print(viewModel.selectedCategories)
                                     
                                 }
                             }

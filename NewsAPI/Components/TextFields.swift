@@ -59,7 +59,7 @@ struct IconTextField : View {
             .padding()
             .frame(maxWidth: .infinity)
             .frame(height: 55)
-            .background(Color.cGrey)
+            .background(Color.greyBlueMedDark)
             .cornerRadius(18)
             .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder().foregroundColor((checkEntry && text == "") ? .cRed : .clear))
             
@@ -140,7 +140,7 @@ struct IconTextFieldPassword : View {
             .padding()
             .frame(maxWidth: .infinity)
             .frame(height: 55)
-            .background(Color.cGrey)
+            .background(Color.greyBlueMedDark)
             .cornerRadius(18)
             .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder().foregroundColor((checkEntry && text == "") ? .cRed : .clear))
             
@@ -170,7 +170,7 @@ struct OTPField : View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity)
             .frame(height: 55)
-            .background(Color.cGrey)
+            .background(Color.greyBlueMedDark)
             .cornerRadius(18)
         
     }

@@ -47,12 +47,12 @@ struct CategoryCell: View {
             }
             .modifier(BottomGradient())
         }
-        
         .frame(width: K.Dimensions.frameWidth / 2.3, height: K.Dimensions.frameHeight / 4)
-        .cornerRadius(30)
+        //.cornerRadius(30)
+        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         
         .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous) .strokeBorder(lineWidth: 5).foregroundColor(isSelected ? .cRed : .clear))
-        .padding(.vertical, 10)
+        //.padding(.vertical, 10)
     }
 }
 

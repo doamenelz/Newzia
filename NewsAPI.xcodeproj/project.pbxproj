@@ -67,6 +67,8 @@
 		490B05D927782C9600A761F7 /* SetupCompleteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */; };
 		490B05DC2778429000A761F7 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05DB2778429000A761F7 /* CategoriesList.swift */; };
 		490B05DF277842EE00A761F7 /* SourcesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05DE277842EE00A761F7 /* SourcesList.swift */; };
+		490B05E2277963D000A761F7 /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E1277963D000A761F7 /* CountryList.swift */; };
+		490B05E42779643400A761F7 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E32779643400A761F7 /* CountryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +152,8 @@
 		490B05D827782C9600A761F7 /* SetupCompleteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCompleteScreen.swift; sourceTree = "<group>"; };
 		490B05DB2778429000A761F7 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		490B05DE277842EE00A761F7 /* SourcesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesList.swift; sourceTree = "<group>"; };
+		490B05E1277963D000A761F7 /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
+		490B05E32779643400A761F7 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +388,8 @@
 		490B05AE277647F900A761F7 /* SetupAccount */ = {
 			isa = PBXGroup;
 			children = (
+				490B05E32779643400A761F7 /* CountryCell.swift */,
+				490B05E1277963D000A761F7 /* CountryList.swift */,
 				490B05B527765DBC00A761F7 /* CountrySetupScreen.swift */,
 				490B05DA2778426800A761F7 /* Categories */,
 				490B05DD277842AC00A761F7 /* Sources */,
@@ -594,6 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490B05E2277963D000A761F7 /* CountryList.swift in Sources */,
 				490B05922775A65000A761F7 /* LoginScreen.swift in Sources */,
 				490B05C92777B95B00A761F7 /* Sources.swift in Sources */,
 				490B05A12776321800A761F7 /* ForgotPasswordScreen.swift in Sources */,
@@ -610,6 +617,7 @@
 				490B05B2277651C800A761F7 /* Countries.swift in Sources */,
 				490B059027759E9100A761F7 /* Icons.swift in Sources */,
 				490B05D7277829B700A761F7 /* UserProfile.swift in Sources */,
+				490B05E42779643400A761F7 /* CountryCell.swift in Sources */,
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
 				490B05992775B38700A761F7 /* SignInViewModel.swift in Sources */,
 				490B05C12776DDDE00A761F7 /* Gradients.swift in Sources */,

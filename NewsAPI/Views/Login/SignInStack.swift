@@ -28,7 +28,7 @@ struct SignInStack: View {
                     Text("Let's Sign")
                     Text("You In")
                 }
-                .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                 
                 Spacer()
             }
@@ -57,7 +57,7 @@ struct SignInStack: View {
                 }
                 
             }, label: {
-                CTA(label: "Sign In")
+                CTARed(label: "Sign In")
             })
             
             

@@ -16,9 +16,9 @@ struct VerificationStack: View {
             HStack {
                 VStack (alignment: .leading, spacing: 20) {
                     Text("Verification")
-                        .modifier(FontModifier(color: .cBlueDark, size: .h1, type: .bold))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .h1, type: .bold))
                     Text("Enter the verification code sent to your email")
-                        .modifier(FontModifier(color: .cBlueMedium, size: .body, type: .medium))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .medium))
                 }
                 
                 Spacer()
@@ -32,7 +32,7 @@ struct VerificationStack: View {
             VStack (spacing: 20) {
                 HStack (spacing: 3) {
                     Text("Haven't received the code? ")
-                        .modifier(FontModifier(color: .cBlueMedium, size: .label, type: .medium))
+                        .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .medium))
                     Text("Resend Code")
                         .modifier(FontModifier(color: .cRed, size: .label, type: .bold))
                 }
@@ -44,7 +44,7 @@ struct VerificationStack: View {
                     }
                     
                 }, label: {
-                    CTA(label: "Verify")
+                    CTARed(label: "Verify")
                 })
                 
             }
