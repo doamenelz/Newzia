@@ -69,6 +69,15 @@
 		490B05DF277842EE00A761F7 /* SourcesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05DE277842EE00A761F7 /* SourcesList.swift */; };
 		490B05E2277963D000A761F7 /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E1277963D000A761F7 /* CountryList.swift */; };
 		490B05E42779643400A761F7 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E32779643400A761F7 /* CountryCell.swift */; };
+		490B05E627797F8A00A761F7 /* GuestOverlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E527797F8A00A761F7 /* GuestOverlayScreen.swift */; };
+		490B05E8277985BB00A761F7 /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05E7277985BB00A761F7 /* CustomTab.swift */; };
+		490B05EB277990A200A761F7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05EA277990A200A761F7 /* RootView.swift */; };
+		490B05EE277A747D00A761F7 /* NewsLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05ED277A747D00A761F7 /* NewsLandingScreen.swift */; };
+		490B05F0277A7EE600A761F7 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05EF277A7EE600A761F7 /* News.swift */; };
+		490B05F2277A854700A761F7 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05F1277A854700A761F7 /* Bookmark.swift */; };
+		490B05F4277AA56C00A761F7 /* APIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05F3277AA56C00A761F7 /* APIUtility.swift */; };
+		490B05F7277AA5EB00A761F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 490B05F6277AA5EB00A761F7 /* Alamofire */; };
+		490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +163,14 @@
 		490B05DE277842EE00A761F7 /* SourcesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesList.swift; sourceTree = "<group>"; };
 		490B05E1277963D000A761F7 /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		490B05E32779643400A761F7 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		490B05E527797F8A00A761F7 /* GuestOverlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestOverlayScreen.swift; sourceTree = "<group>"; };
+		490B05E7277985BB00A761F7 /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
+		490B05EA277990A200A761F7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		490B05ED277A747D00A761F7 /* NewsLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLandingScreen.swift; sourceTree = "<group>"; };
+		490B05EF277A7EE600A761F7 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		490B05F1277A854700A761F7 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		490B05F3277AA56C00A761F7 /* APIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtility.swift; sourceTree = "<group>"; };
+		490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLandingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490B05CE2777BECB00A761F7 /* SDWebImageSwiftUI in Frameworks */,
+				490B05F7277AA5EB00A761F7 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +286,7 @@
 				490B05932775A6A800A761F7 /* NavigationHeader.swift */,
 				490B05952775ACC200A761F7 /* TextFields.swift */,
 				490B05D12778117300A761F7 /* ImagePicker.swift */,
+				490B05E7277985BB00A761F7 /* CustomTab.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,6 +296,8 @@
 			children = (
 				490B05D5277829A000A761F7 /* Utilities */,
 				490B05B0277651B700A761F7 /* AppData */,
+				490B05EF277A7EE600A761F7 /* News.swift */,
+				490B05F1277A854700A761F7 /* Bookmark.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +305,8 @@
 		490B0562277571F700A761F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				490B05EC277A721600A761F7 /* News */,
+				490B05E92779906300A761F7 /* BaseViews */,
 				490B05AE277647F900A761F7 /* SetupAccount */,
 				490B0569277577B000A761F7 /* IntroScreens */,
 				490B058C2775983400A761F7 /* Login */,
@@ -295,6 +318,7 @@
 		490B0563277571FE00A761F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				490B05F8277AE11800A761F7 /* News */,
 				490B05B72776B7D900A761F7 /* Profile */,
 				490B05872775861C00A761F7 /* IntroScreens */,
 				490B05972775B36E00A761F7 /* Login */,
@@ -307,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				490B056D2775790F00A761F7 /* Constants.swift */,
+				490B05F3277AA56C00A761F7 /* APIUtility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -352,6 +377,7 @@
 				490B05912775A65000A761F7 /* LoginScreen.swift */,
 				490B059A2775B78E00A761F7 /* SignInStack.swift */,
 				490B059E2776311A00A761F7 /* SignUpStack.swift */,
+				490B05E527797F8A00A761F7 /* GuestOverlayScreen.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -453,6 +479,30 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		490B05E92779906300A761F7 /* BaseViews */ = {
+			isa = PBXGroup;
+			children = (
+				490B05EA277990A200A761F7 /* RootView.swift */,
+			);
+			path = BaseViews;
+			sourceTree = "<group>";
+		};
+		490B05EC277A721600A761F7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				490B05ED277A747D00A761F7 /* NewsLandingScreen.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		490B05F8277AE11800A761F7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,6 +521,7 @@
 			name = NewsAPI;
 			packageProductDependencies = (
 				490B05CD2777BECB00A761F7 /* SDWebImageSwiftUI */,
+				490B05F6277AA5EB00A761F7 /* Alamofire */,
 			);
 			productName = NewsAPI;
 			productReference = 490B05322775718A00A761F7 /* NewsAPI.app */;
@@ -546,6 +597,7 @@
 			mainGroup = 490B05292775718A00A761F7;
 			packageReferences = (
 				490B05CC2777BECB00A761F7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				490B05F5277AA5EB00A761F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 490B05332775718A00A761F7 /* Products */;
 			projectDirPath = "";
@@ -605,24 +657,31 @@
 				490B05C92777B95B00A761F7 /* Sources.swift in Sources */,
 				490B05A12776321800A761F7 /* ForgotPasswordScreen.swift in Sources */,
 				490B05DC2778429000A761F7 /* CategoriesList.swift in Sources */,
+				490B05F2277A854700A761F7 /* Bookmark.swift in Sources */,
+				490B05EE277A747D00A761F7 /* NewsLandingScreen.swift in Sources */,
 				490B058527757EA800A761F7 /* Fonts.swift in Sources */,
 				490B05CB2777BBD200A761F7 /* SourcesCell.swift in Sources */,
 				490B05DF277842EE00A761F7 /* SourcesList.swift in Sources */,
+				490B05EB277990A200A761F7 /* RootView.swift in Sources */,
 				490B05BF2776D45A00A761F7 /* Category.swift in Sources */,
 				490B05AA2776411E00A761F7 /* VerificationStack.swift in Sources */,
 				490B05D22778117300A761F7 /* ImagePicker.swift in Sources */,
 				490B05D927782C9600A761F7 /* SetupCompleteScreen.swift in Sources */,
 				490B05A32776348800A761F7 /* ForgotPasswordViewModel.swift in Sources */,
 				490B056C277577E000A761F7 /* SplashScreen.swift in Sources */,
+				490B05E8277985BB00A761F7 /* CustomTab.swift in Sources */,
 				490B05B2277651C800A761F7 /* Countries.swift in Sources */,
+				490B05F0277A7EE600A761F7 /* News.swift in Sources */,
 				490B059027759E9100A761F7 /* Icons.swift in Sources */,
 				490B05D7277829B700A761F7 /* UserProfile.swift in Sources */,
 				490B05E42779643400A761F7 /* CountryCell.swift in Sources */,
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
+				490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */,
 				490B05992775B38700A761F7 /* SignInViewModel.swift in Sources */,
 				490B05C12776DDDE00A761F7 /* Gradients.swift in Sources */,
 				490B05A727763BED00A761F7 /* ResetPasswordViewModel.swift in Sources */,
 				490B05BD2776CEAE00A761F7 /* CategoriesSetupScreen.swift in Sources */,
+				490B05E627797F8A00A761F7 /* GuestOverlayScreen.swift in Sources */,
 				490B05BB2776CCF400A761F7 /* SourcesSetupScreen.swift in Sources */,
 				490B05892775863000A761F7 /* ProductTourViewModel.swift in Sources */,
 				490B05B92776B7FB00A761F7 /* AccountSetupViewModel.swift in Sources */,
@@ -643,6 +702,7 @@
 				490B05682775773800A761F7 /* Assets.swift in Sources */,
 				490B05362775718A00A761F7 /* NewsAPIApp.swift in Sources */,
 				490B056E2775790F00A761F7 /* Constants.swift in Sources */,
+				490B05F4277AA56C00A761F7 /* APIUtility.swift in Sources */,
 				490B059F2776311A00A761F7 /* SignUpStack.swift in Sources */,
 				490B05AC2776415200A761F7 /* UpdatePasswordStack.swift in Sources */,
 			);
@@ -989,6 +1049,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		490B05F5277AA5EB00A761F7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -996,6 +1064,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 490B05CC2777BECB00A761F7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		490B05F6277AA5EB00A761F7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 490B05F5277AA5EB00A761F7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

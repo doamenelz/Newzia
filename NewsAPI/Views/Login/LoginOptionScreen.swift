@@ -10,7 +10,10 @@ import SwiftUI
 struct LoginOptionScreen: View {
     
     @EnvironmentObject var userProfile : UserProfile
+    
     @Binding var dismiss : Bool
+    
+    @State private var continueAsGuest : Bool = false
     
     var body: some View {
         NavigationView {
@@ -28,9 +31,19 @@ struct LoginOptionScreen: View {
                         
                         Spacer()
                         
-                        Text("Skip")
-                            .modifier(FontModifier(color: .cBlueMedium, size: .label, type: .medium))
-                            .padding()
+                        Button(action: {
+                            
+                            withAnimation {
+                                continueAsGuest.toggle()
+                            }
+                            
+                        }, label: {
+                            Text("Skip")
+                                .modifier(FontModifier(color: .cBlueMedium, size: .label, type: .medium))
+                                .padding()
+                            
+                        })
+                        
                         
                     }
                     
@@ -99,6 +112,23 @@ struct LoginOptionScreen: View {
                     
                 }
                 .padding()
+                .background(continueAsGuest ? Color.greyBlueMedium : .clear)
+                .blur(radius: continueAsGuest ? 10 : 0)
+                .onTapGesture {
+                    if continueAsGuest {
+                        withAnimation {
+                            continueAsGuest.toggle()
+                        }
+                    }
+                }
+                
+                VStack {
+                    Spacer()
+                    
+                    GuestOverlayScreen()
+                        .padding()
+                }
+                .offset(y: continueAsGuest ? 0 : K.Dimensions.frameHeight)
             }
             .environmentObject(userProfile)
             .hideNavigationBar()
@@ -108,6 +138,6 @@ struct LoginOptionScreen: View {
 
 struct LoginOptionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginOptionScreen(dismiss: .constant(false))
+        LoginOptionScreen(dismiss: .constant(false)).environmentObject(UserProfile())//.preferredColorScheme(.dark)
     }
 }

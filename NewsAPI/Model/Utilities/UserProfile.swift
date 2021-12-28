@@ -19,6 +19,8 @@ class UserProfile : ObservableObject {
     @Published var avatar = UIImage()
     @Published var email : String = ""
     
+    @Published var isSignedIn : Bool = false
+    
     func setUserProfile (categories: [Category], sources: [Source], avatar: UIImage, username: String, country: Country) {
         self.categories = categories
         self.sources = sources

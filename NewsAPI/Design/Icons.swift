@@ -56,6 +56,9 @@ enum SystemIcons : String {
     case mail = "envelope"
     case lock = "lock"
     case newsIconPlaceholder = "newspaper.circle.fill"
+    case bookmark = "bookmark.fill"
+    case bell = "bell.fill"
+    case bellBadge = "bell.badge.fill"
 }
 
 enum CustomIcons : String {

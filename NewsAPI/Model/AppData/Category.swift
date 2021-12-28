@@ -24,6 +24,33 @@ extension Category {
         Category(type: .sports),
         Category(type: .technology)
     ]
+    
+    static func parseCategoryToEnum (category: String) -> CategoryTypes {
+        
+        switch category {
+            case CategoryTypes.business.rawValue:
+                return CategoryTypes.business
+                
+            case CategoryTypes.entertainment.rawValue:
+                return CategoryTypes.entertainment
+                
+            case CategoryTypes.general.rawValue:
+                return CategoryTypes.general
+                
+            case CategoryTypes.health.rawValue:
+                return CategoryTypes.health
+                
+            case CategoryTypes.science.rawValue:
+                return CategoryTypes.science
+                
+            case CategoryTypes.technology.rawValue:
+                return CategoryTypes.technology
+                
+            default:
+                return CategoryTypes.general
+        }
+    }
+    
 }
 
 

@@ -21,6 +21,24 @@ struct Source : Codable, Hashable {
     let country : String
 }
 
+extension Source {
+    
+    
+    static func changeSourcesToString (sources: [Source]) -> String {
+        
+        var concatenated : [String] = []
+        
+        for source in sources {
+            concatenated.append(source.id)
+        }
+        
+        print(concatenated)
+        return concatenated.joined(separator: ",")
+    }
+    
+    
+}
+
 
 class SourcesModel : ObservableObject {
     
@@ -29,6 +47,7 @@ class SourcesModel : ObservableObject {
     @Published var localData : Data?
     
     init () {
+        
         localData = readLocalFile(forName: "sources")
     }
     
@@ -46,14 +65,24 @@ class SourcesModel : ObservableObject {
         return nil
     }
     
-    func parse(jsonData: Data) {
+    func parse(jsonData: Data, category: [Category]) {
+        
+        var parsedSources = [Source]()
         
         do {
             let decodedData = try JSONDecoder().decode([Source].self,
                                                        from: jsonData)
             
-            
-            sources = decodedData
+            for item in decodedData {
+                for cat in category {
+                    if item.category.uppercased() == cat.type.rawValue.uppercased() {
+                        parsedSources.append(item)
+                    }
+                }
+                
+                
+            }
+            sources = parsedSources
             
         } catch {
             print(error)

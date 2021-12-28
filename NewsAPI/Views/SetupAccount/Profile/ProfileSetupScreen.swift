@@ -95,6 +95,8 @@ struct ProfileSetupScreen: View {
                         
                         userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!)
                         
+                        userProfile.isSignedIn = true
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                             withAnimation {
                                 goToCompletion.toggle()

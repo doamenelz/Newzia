@@ -41,7 +41,7 @@ struct CategoriesSetupScreen: View {
 
 struct CategoriesSetupScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesSetupScreen(viewModel: AccountSetupViewModel())
+        CategoriesSetupScreen(viewModel: AccountSetupViewModel()).preferredColorScheme(.dark)
     }
 }
 
@@ -71,6 +71,7 @@ fileprivate struct NextCTA: View {
                 .padding()
                 .padding(.bottom, 10)
                 .background(BlurView(style: .systemUltraThinMaterial))
+            
         }
         .edgesIgnoringSafeArea(.bottom)
     }

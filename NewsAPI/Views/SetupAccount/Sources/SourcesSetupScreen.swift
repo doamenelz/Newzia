@@ -38,7 +38,7 @@ struct SourcesSetupScreen: View {
         .onAppear(perform: {
             
             if sourcesViewModel.localData != nil {
-                sourcesViewModel.parse(jsonData: sourcesViewModel.localData!)
+                sourcesViewModel.parse(jsonData: sourcesViewModel.localData!, category: viewModel.selectedCategories)
             }
             
         })

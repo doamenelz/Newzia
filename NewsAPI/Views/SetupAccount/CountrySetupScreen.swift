@@ -42,6 +42,7 @@ struct CountrySetupScreen: View {
             
             
             NextCTA(viewModel: viewModel)
+            
         }
         .hideNavigationBar()
     }

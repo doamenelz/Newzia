@@ -10,9 +10,11 @@ import SwiftUI
 struct SetupCompleteScreen: View {
     
     @EnvironmentObject var userProfile : UserProfile
+    @State private var goToRootView : Bool = false
     
     var body: some View {
         ZStack {
+            
             Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             
             VStack (spacing: 60) {
@@ -38,6 +40,9 @@ struct SetupCompleteScreen: View {
                 
                 
                 Button(action: {
+                    withAnimation {
+                        goToRootView.toggle()
+                    }
                     
                 }, label: {
                     CTARed(label: "Home")
@@ -45,6 +50,11 @@ struct SetupCompleteScreen: View {
                 
             }
             .padding()
+            
+            if goToRootView {
+                RootView()
+            }
+            
         }
         .environmentObject(userProfile)
     }
