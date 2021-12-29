@@ -10,12 +10,12 @@ import SDWebImageSwiftUI
 
 struct DiscoverSourcesCell: View {
     
-    var source : Following
+    var source : Source
     
     var body: some View {
         HStack (spacing: 15) {
             
-            WebImage(url: URL(string: K.URLs.clearBit + source.source.url))
+            WebImage(url: URL(string: K.URLs.clearBit + source.url))
                 .resizable()
                 .placeholder(Image(systemName: SystemIcons.newsIconPlaceholder.rawValue))
                 .aspectRatio(contentMode: .fit)
@@ -24,10 +24,10 @@ struct DiscoverSourcesCell: View {
             
             
             VStack (alignment: .leading, spacing: 5) {
-                Text(source.source.name)
+                Text(source.name)
                     .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .bold))
                 //Text("\(source.news.count) Item\(source.news.count != 1 ? "s" : "")")
-                Text(source.source.category.capitalized)
+                Text(source.category.capitalized)
                     .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
             }
             
@@ -42,6 +42,6 @@ struct DiscoverSourcesCell: View {
 
 struct DiscoverSourcesCell_Previews: PreviewProvider {
     static var previews: some View {
-        DiscoverSourcesCell(source: Following.sample[0])
+        DiscoverSourcesCell(source: Source.sampleSources[0])
     }
 }

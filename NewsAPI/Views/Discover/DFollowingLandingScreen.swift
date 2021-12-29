@@ -11,13 +11,12 @@ struct DFollowingLandingScreen: View {
     
     @EnvironmentObject var userProfile : UserProfile
     
-    @StateObject var viewModel = DiscoverFollowingViewModel()
-    
     @State private var searchedText : String = ""
     
     @State private var isLoading : Bool = false
     
     var body: some View {
+        
         ZStack {
             
             Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
@@ -39,45 +38,28 @@ struct DFollowingLandingScreen: View {
                 
                 
                 ScrollView {
-                    
-                    if viewModel.apiResponse != nil {
+                    LazyVStack (spacing: 20) {
                         
-                        if viewModel.apiResponse!.success {
-                            LazyVStack (spacing: 20) {
-                                
-                                ForEach(searchedText == "" ? viewModel.following : viewModel.following.filter({$0.source.name.uppercased().contains( searchedText.uppercased())})) { source in
-                                    DiscoverSourcesCell(source: source)
-                                        .padding(.all, 10)
-                                        .onTapGesture {
-                                            //Goto Profile
-                                        }
-                                    
-                                }
-                                
-                            }
-                            .padding()
-                            .padding(.bottom, 60)
+                        ForEach(searchedText == "" ? userProfile.sources : userProfile.sources.filter({$0.name.uppercased().contains( searchedText.uppercased())}), id: \.self) { source in
+                            
+                            NavigationLink(destination: {
+                                SourceProfilePage(source: source)
+                            }, label: {
+                                DiscoverSourcesCell(source: source)
+                                    .padding(.all, 10)
+                            })
+                            
                         }
                         
                     }
+                    .padding()
+                    .padding(.bottom, 60)
                     
                 }
                                 
             }
             
-            if viewModel.apiResponse == nil {
-                CircularLoad()
-                    .onAppear(perform: {
-                        print("------SOurces landing just appeared")
-                        DispatchQueue.global(qos: .userInitiated).async {
-                            print("Im on the background thread")
-                            viewModel.getRecentNews(sources: userProfile.sources, language: userProfile.preferredNewsLanguage)
-  
-                            
-                        }
-                        
-                    })
-            }
+            
             
         }
         .hideNavigationBar()
@@ -86,7 +68,7 @@ struct DFollowingLandingScreen: View {
 
 struct DFollowingLandingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        DFollowingLandingScreen(viewModel: DiscoverFollowingViewModel()).environmentObject(UserProfile()).preferredColorScheme(.dark)
+        DFollowingLandingScreen().environmentObject(UserProfile()).preferredColorScheme(.dark)
     }
 }
 

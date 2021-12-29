@@ -8,40 +8,42 @@
 import Foundation
 import Alamofire
 
-class DiscoverFollowingViewModel : ObservableObject {
+class SourcesProfilePageViewModel : ObservableObject {
     
     @Published var allNews = [News]()
     
     @Published var apiResponse : NewsCompletionResponse?
     
-    @Published var following = [Following]()
+    @Published var selectedNews : News?
     
-    func parsePerCell (source: [Source]) {
-        
-        var allFollowing = [Following]()
-        
-        for source in source {
-            
-            //allFollowing.append(Following(source: source, news: []))
-            
-            var follow : Following = Following(source: source, news: [])
-            
-            for news in allNews {
-                if news.news.source.id == source.id {
-                    follow.news.append(news)
-                }
-            }
-            
-            allFollowing.append(follow)
-            
-        }
-        
-        following = allFollowing
-        apiResponse?.success = true
-        
-    }
+    //@Published var following = [Following]()
     
-    func getRecentNews (sources: [Source], language: String) {
+//    func parsePerCell (source: [Source]) {
+//
+//        var allFollowing = [Following]()
+//
+//        for source in source {
+//
+//            //allFollowing.append(Following(source: source, news: []))
+//
+//            var follow : Following = Following(source: source, news: [])
+//
+//            for news in allNews {
+//                if news.news.source.id == source.id {
+//                    follow.news.append(news)
+//                }
+//            }
+//
+//            allFollowing.append(follow)
+//
+//        }
+//
+//        following = allFollowing
+//        apiResponse?.success = true
+//
+//    }
+    
+    func topHeadlines (sources: [Source], language: String) {
         
         let parameters = [
             "sources" : Source.changeSourcesToString(sources: sources),
@@ -50,7 +52,7 @@ class DiscoverFollowingViewModel : ObservableObject {
             "language" : language
         ] as [String : Any]
         
-        let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.everything)
+        let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.topHeadings)
         
         apiUtil.getNews(sources: sources) { [self] response in
             
@@ -59,8 +61,8 @@ class DiscoverFollowingViewModel : ObservableObject {
             if response.success {
                 
                 allNews = apiUtil.news
-                
-                parsePerCell(source: sources)
+                apiResponse?.success = true
+                //parsePerCell(source: sources)
                 
                 
             } else {

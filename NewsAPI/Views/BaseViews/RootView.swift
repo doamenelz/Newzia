@@ -21,8 +21,8 @@ struct RootView: View {
                 //Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
                 
                 
-            //NewsLandingScreen()
-              Text("Home")
+            NewsLandingScreen()
+              //Text("Home")
                     //.zIndex(selectedTab == .home ? 2 : 1)
                     .opacity(selectedTab == .home ? 1 : 0)
                 

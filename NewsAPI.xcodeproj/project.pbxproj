@@ -85,9 +85,10 @@
 		490B0605277BD9ED00A761F7 /* DiscoverLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0604277BD9ED00A761F7 /* DiscoverLandingScreen.swift */; };
 		490B0607277BF39C00A761F7 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0606277BF39C00A761F7 /* DiscoverCell.swift */; };
 		490B0609277BF83000A761F7 /* DFollowingLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */; };
-		490B060C277C03EB00A761F7 /* DiscoverFollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B060B277C03EA00A761F7 /* DiscoverFollowingViewModel.swift */; };
+		490B060C277C03EB00A761F7 /* SourcesProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B060B277C03EA00A761F7 /* SourcesProfilePageViewModel.swift */; };
 		490B060E277CCB4A00A761F7 /* DiscoverSourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B060D277CCB4A00A761F7 /* DiscoverSourcesCell.swift */; };
 		490B0610277CCFD800A761F7 /* _UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B060F277CCFD700A761F7 /* _UserProfile.swift */; };
+		490B0613277D03FE00A761F7 /* SourceProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0612277D03FE00A761F7 /* SourceProfilePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,9 +189,10 @@
 		490B0604277BD9ED00A761F7 /* DiscoverLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverLandingScreen.swift; sourceTree = "<group>"; };
 		490B0606277BF39C00A761F7 /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFollowingLandingScreen.swift; sourceTree = "<group>"; };
-		490B060B277C03EA00A761F7 /* DiscoverFollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverFollowingViewModel.swift; sourceTree = "<group>"; };
+		490B060B277C03EA00A761F7 /* SourcesProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesProfilePageViewModel.swift; sourceTree = "<group>"; };
 		490B060D277CCB4A00A761F7 /* DiscoverSourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSourcesCell.swift; sourceTree = "<group>"; };
 		490B060F277CCFD700A761F7 /* _UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _UserProfile.swift; sourceTree = "<group>"; };
+		490B0612277D03FE00A761F7 /* SourceProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceProfilePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +328,7 @@
 		490B0562277571F700A761F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				490B0611277D03E700A761F7 /* Global */,
 				490B0603277BD9D800A761F7 /* Discover */,
 				490B05EC277A721600A761F7 /* News */,
 				490B05E92779906300A761F7 /* BaseViews */,
@@ -544,9 +547,17 @@
 		490B060A277C03D100A761F7 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				490B060B277C03EA00A761F7 /* DiscoverFollowingViewModel.swift */,
+				490B060B277C03EA00A761F7 /* SourcesProfilePageViewModel.swift */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		490B0611277D03E700A761F7 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				490B0612277D03FE00A761F7 /* SourceProfilePage.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,8 +756,9 @@
 				490B059B2775B78E00A761F7 /* SignInStack.swift in Sources */,
 				490B058B277596D400A761F7 /* Buttons.swift in Sources */,
 				490B057027757AB300A761F7 /* ProductTourScreen.swift in Sources */,
-				490B060C277C03EB00A761F7 /* DiscoverFollowingViewModel.swift in Sources */,
+				490B060C277C03EB00A761F7 /* SourcesProfilePageViewModel.swift in Sources */,
 				490B05FE277B8C3400A761F7 /* NewsLandingHero.swift in Sources */,
+				490B0613277D03FE00A761F7 /* SourceProfilePage.swift in Sources */,
 				490B0607277BF39C00A761F7 /* DiscoverCell.swift in Sources */,
 				490B0605277BD9ED00A761F7 /* DiscoverLandingScreen.swift in Sources */,
 				490B05A52776380200A761F7 /* CodeVerificationScreen.swift in Sources */,
