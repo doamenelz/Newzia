@@ -21,6 +21,7 @@ struct K {
         static let clearBit : String = "https://logo.clearbit.com/"
         static let BASE_NEWS : String = "https://newsapi.org/v2/"
         static let topHeadings : String = BASE_NEWS + "top-headlines"
+        static let everything : String = BASE_NEWS + "everything"
     }
     
     struct Keys {

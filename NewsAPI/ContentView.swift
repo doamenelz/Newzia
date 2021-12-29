@@ -15,12 +15,23 @@ struct ContentView: View {
    
     
     var body: some View {
-        //ProductTourScreen()
-        DiscoverLandingScreen()
-            .environmentObject(userProfile)
-            .onAppear(perform: {
-                
-            })
+        
+        if userProfile.isSignedIn {
+            RootView()
+            //DiscoverLandingScreen()
+                .environmentObject(userProfile)
+                .onAppear(perform: {
+                    //print(UserDefaults.standard.dictionaryRepresentation())
+                })
+        } else {
+            ProductTourScreen()
+            //DiscoverLandingScreen()
+                .environmentObject(userProfile)
+                .onAppear(perform: {
+                    //print(UserDefaults.standard.dictionaryRepresentation())
+                })
+        }
+        
     }
 }
 

@@ -22,6 +22,49 @@ struct Source : Codable, Hashable {
 }
 
 extension Source {
+    static let sampleSources : [Source] = [Source(id: "id", name: "BBC News", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis dolor eget eros elementum porta. Nam laoreet, diam a malesuada mollis, arcu odio egestas sapien, ac finibus enim erat et neque. Sed pretium volutpat neque nec elementum. Pellentesque habitant morbi tristique senectus et ", url: "www.bbc.com", category: "general", language: "en", country: "gb")]
+    
+    
+    static func persistSource (sources: [Source]) {
+        
+        do {
+            let encoder = JSONEncoder()
+
+            let data = try encoder.encode(sources)
+
+            UserDefaults.standard.set(data, forKey: _UserProfileKeys.sources)
+            
+            
+            print("Persisted Sources")
+
+        } catch {
+            print("Unable to Encode sources (\(error))")
+        }
+        
+    }
+    
+    static func getSourcesFromUD () -> [Source] {
+       
+        if let data = UserDefaults.standard.data(forKey: _UserProfileKeys.sources) {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+                
+                // Decode Note
+                let data = try decoder.decode([Source].self, from: data)
+                
+                print("Sources ---> \(data)")
+                return data
+                
+            } catch {
+                print("Unable to Decode Sources (\(error))")
+                return []
+            }
+        } else { return [] }
+    }
+}
+
+extension Source {
     
     
     static func changeSourcesToString (sources: [Source]) -> String {
@@ -32,7 +75,6 @@ extension Source {
             concatenated.append(source.id)
         }
         
-        print(concatenated)
         return concatenated.joined(separator: ",")
     }
     
@@ -75,7 +117,7 @@ class SourcesModel : ObservableObject {
             
             for item in decodedData {
                 for cat in category {
-                    if item.category.uppercased() == cat.type.rawValue.uppercased() {
+                    if item.category.uppercased() == cat.type.uppercased() {
                         parsedSources.append(item)
                     }
                 }
@@ -91,3 +133,5 @@ class SourcesModel : ObservableObject {
     }
     
 }
+
+

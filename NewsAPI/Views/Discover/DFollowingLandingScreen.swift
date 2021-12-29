@@ -6,24 +6,30 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct DFollowingLandingScreen: View {
     
+    @EnvironmentObject var userProfile : UserProfile
+    
+    @StateObject var viewModel = DiscoverFollowingViewModel()
+    
     @State private var searchedText : String = ""
+    
+    @State private var isLoading : Bool = false
+    
     var body: some View {
         ZStack {
             
             Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
             
-            VStack (alignment: .leading){
+            VStack (alignment: .leading) {
                 NavigationHeader()
                     .padding(.horizontal)
                 
                 VStack (alignment: .leading) {
                     Text("Sources")
                         .modifier(FontModifier(color: .darkGreySoft, size: .large, type: .bold))
-                    Text("150 Following")
+                    Text("\(userProfile.sources.count) Following")
                         .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
                 }
                 .padding(.horizontal)
@@ -31,56 +37,57 @@ struct DFollowingLandingScreen: View {
                 
                 IconTextField(icon: .search, placeHolder: "Search for sources", text: $searchedText, isMandatory: false, errorMessage: "", checkEntry: false).padding(.horizontal)
                 
+                
                 ScrollView {
                     
-                    VStack (spacing: 20) {
+                    if viewModel.apiResponse != nil {
                         
-                        DSourcesCell(source: Source(id: "bbc-news", name: "BBC News", description: "Random Description", url: "www.bbc.com", category: "general", language: "en", country: "gb"))
+                        if viewModel.apiResponse!.success {
+                            LazyVStack (spacing: 20) {
+                                
+                                ForEach(searchedText == "" ? viewModel.following : viewModel.following.filter({$0.source.name.uppercased().contains( searchedText.uppercased())})) { source in
+                                    DiscoverSourcesCell(source: source)
+                                        .padding(.all, 10)
+                                        .onTapGesture {
+                                            //Goto Profile
+                                        }
+                                    
+                                }
+                                
+                            }
+                            .padding()
+                            .padding(.bottom, 60)
+                        }
                         
                     }
-                    .padding()
+                    
                 }
-                
-                
                                 
             }
+            
+            if viewModel.apiResponse == nil {
+                CircularLoad()
+                    .onAppear(perform: {
+                        print("------SOurces landing just appeared")
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            print("Im on the background thread")
+                            viewModel.getRecentNews(sources: userProfile.sources, language: userProfile.preferredNewsLanguage)
+  
+                            
+                        }
+                        
+                    })
+            }
+            
         }
+        .hideNavigationBar()
     }
 }
 
 struct DFollowingLandingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        DFollowingLandingScreen().preferredColorScheme(.dark)
+        DFollowingLandingScreen(viewModel: DiscoverFollowingViewModel()).environmentObject(UserProfile()).preferredColorScheme(.dark)
     }
 }
 
-struct DSourcesCell: View {
-    
-    var source : Source
-    
-    var body: some View {
-        HStack (spacing: 15) {
-            
-            WebImage(url: URL(string: K.URLs.clearBit + source.url))
-                .resizable()
-                .placeholder(Image(systemName: SystemIcons.newsIconPlaceholder.rawValue))
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
-            
-            
-            VStack (alignment: .leading, spacing: 5) {
-                Text(source.name)
-                    .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .bold))
-                Text("10 Items")
-                    .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
-            }
-            
-            Spacer()
-            
-            Image(systemName: SystemIcons.chevronRight.rawValue)
-                .font(.caption)
-            //.padding(.trailing)
-        }
-    }
-}
+

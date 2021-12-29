@@ -9,20 +9,19 @@ import Foundation
 import SwiftUI
 
 
-struct Category : Identifiable {
-    let id = UUID()
-    let type : CategoryTypes
+struct Category : Codable, Hashable {
+    let type : String
 }
 
 extension Category {
     static let categories : [Category] = [
-        Category(type: .business),
-        Category(type: .entertainment),
-        Category(type: .general),
-        Category(type: .health),
-        Category(type: .science),
-        Category(type: .sports),
-        Category(type: .technology)
+        Category(type: CategoryTypes.business.rawValue),
+        Category(type: CategoryTypes.entertainment.rawValue),
+        Category(type: CategoryTypes.general.rawValue),
+        Category(type: CategoryTypes.health.rawValue),
+        Category(type: CategoryTypes.science.rawValue),
+        Category(type: CategoryTypes.sports.rawValue),
+        Category(type: CategoryTypes.technology.rawValue)
     ]
     
     static func parseCategoryToEnum (category: String) -> CategoryTypes {
@@ -53,6 +52,44 @@ extension Category {
                 print("\(category) default --")
                 return CategoryTypes.general
         }
+    }
+    
+    static func persistCategories (categories: [Category]) {
+        
+        do {
+            let encoder = JSONEncoder()
+
+            let data = try encoder.encode(categories)
+
+            UserDefaults.standard.set(data, forKey: _UserProfileKeys.categories)
+            
+            
+            print("Persisted Categories")
+
+        } catch {
+            print("Unable to Encode Categories (\(error))")
+        }
+        
+    }
+    
+    static func getCategoriesFromUD () -> [Category] {
+       
+        if let data = UserDefaults.standard.data(forKey: _UserProfileKeys.categories) {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+                
+                // Decode Note
+                let data = try decoder.decode([Category].self, from: data)
+                
+                print("Categories ---> \(data)")
+                return data
+                
+            } catch {
+                print("Unable to Decode Categories (\(error))")
+                return []
+            }
+        } else { return [] }
     }
     
 }

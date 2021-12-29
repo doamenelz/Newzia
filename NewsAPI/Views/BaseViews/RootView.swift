@@ -15,16 +15,19 @@ struct RootView: View {
     
     var body: some View {
 //
-//        NavigationView {
+        NavigationView {
             
             ZStack {
-                Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
+                //Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
                 
                 
-            NewsLandingScreen()
+            //NewsLandingScreen()
+              Text("Home")
+                    //.zIndex(selectedTab == .home ? 2 : 1)
                     .opacity(selectedTab == .home ? 1 : 0)
                 
                 DiscoverLandingScreen()
+                    //.zIndex(selectedTab == .search ? 2 : 1)
                     .opacity(selectedTab == .search ? 1 : 0)
                 
                 Text("Bookmark")
@@ -32,28 +35,18 @@ struct RootView: View {
                 
                 Text("Profile")
                     .opacity(selectedTab == .person ? 1 : 0)
-               
-//                if selectedTab == .home {
-//                    NewsLandingScreen()
-//                } else if selectedTab == .search {
-//                    Text("Search")
-//                } else if selectedTab == .bookmark {
-//                    Text("Bookmark")
-//                } else {
-//                    Text("Profile")
-//                }
-                
+
                 VStack {
                     Spacer()
                     CustomTabBar(selection: $selectedTab)
                 }
-                //.background(Color.whiteBlueDark)
                 .edgesIgnoringSafeArea(.bottom)
             
             }
+            .hideNavigationBar()
             .environmentObject(userProfile)
             
-        //}
+        }
         
     }
 }

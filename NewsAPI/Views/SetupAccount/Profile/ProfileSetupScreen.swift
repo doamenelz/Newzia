@@ -93,9 +93,14 @@ struct ProfileSetupScreen: View {
                 CircularLoad()
                     .onAppear(perform: {
                         
-                        userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!)
+                        DispatchQueue.main.async {
+                            userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!)
+                            
+                            userProfile.isSignedIn = true
+                            
+                            
+                        }
                         
-                        userProfile.isSignedIn = true
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                             withAnimation {

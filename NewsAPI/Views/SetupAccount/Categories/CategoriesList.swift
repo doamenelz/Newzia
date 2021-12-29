@@ -24,7 +24,7 @@ struct CategoriesList: View {
             
             LazyVGrid(columns: columns, spacing: 10, content: {
                 
-                ForEach(search != "" ? Category.categories.filter({$0.type.rawValue.uppercased().contains(search.uppercased())}) : Category.categories) { category in
+                ForEach(search != "" ? Category.categories.filter({$0.type.uppercased().contains(search.uppercased())}) : Category.categories, id: \.self) { category in
                     
                     CategoryCell(category: category, isSelected: viewModel.selectedCategories.contains(where: {$0.type == category.type}) ? true : false)
                         .onTapGesture {

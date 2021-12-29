@@ -17,8 +17,13 @@ struct DiscoverCell: View {
         ZStack {
             Image(image)
                 .resizable()
+                .scaledToFill()
+                //.clipped()
                 .aspectRatio(contentMode: .fill)
+                
                 .frame(height: K.Dimensions.frameHeight / 6)
+                .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                
             
             VStack (alignment: .leading, spacing: 5) {
                 Spacer()
@@ -28,7 +33,7 @@ struct DiscoverCell: View {
                     Spacer()
                 }
                 Text(countLabel)
-                    .modifier(FontModifier(color: .white, size: .label, type: .medium))
+                    .modifier(FontModifier(color: .white, size: .label, type: .light))
             }
             .padding()
             .modifier(DiscoverGradient())
@@ -48,7 +53,7 @@ struct DiscoverCell_Previews: PreviewProvider {
 struct DiscoverCellCountry: View {
     
     var label : String
-    var news : [News]
+    //var news : [News]
     var image : String
     var country : String
     
@@ -56,29 +61,31 @@ struct DiscoverCellCountry: View {
         ZStack {
             Image(image)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .scaledToFill()
+                //.clipped()
+                //.aspectRatio(contentMode: .fill)
                 .frame(height: K.Dimensions.frameHeight / 6)
-                
-                //.clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             
             VStack (alignment: .leading, spacing: 5) {
                 Spacer()
+                Image(country)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 24)
                 HStack {
                     Text(label)
                         .modifier(FontModifier(color: .white, size: .body, type: .bold))
                         
-                    Image(country)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 24)
+                    
                         
                     Spacer()
                 }
                 
                 
                 
-                Text("\(news.count) Items")
-                    .modifier(FontModifier(color: .white, size: .label, type: .medium))
+                //Text("\(news.count) Items")
+                  //  .modifier(FontModifier(color: .white, size: .label, type: .medium))
             }
             .padding()
             .modifier(DiscoverGradient())

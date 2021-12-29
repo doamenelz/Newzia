@@ -24,6 +24,9 @@ struct NewsLandingScreen: View {
     
     var body: some View {
         
+        NavigationView {
+            
+        
             ZStack {
                 
                 Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
@@ -74,7 +77,7 @@ struct NewsLandingScreen: View {
                 
             })
             .hideNavigationBar()
-        
+    }
         
     }
 }
@@ -142,11 +145,11 @@ fileprivate struct SectionHeader: View {
                         //}
                     }
                 
-                ForEach(userProfile.categories) { category in
-                    CategoryFilter(label: category.type.rawValue, isSelected: selectedCategory.uppercased() == category.type.rawValue.uppercased())
+                ForEach(userProfile.categories, id: \.self) { category in
+                    CategoryFilter(label: category.type, isSelected: selectedCategory.uppercased() == category.type.uppercased())
                         .onTapGesture {
                            // withAnimation {
-                                selectedCategory = category.type.rawValue
+                                selectedCategory = category.type
                            // }
                         }
                 }

@@ -1,32 +1,100 @@
 //
-//  NewsLandingViewModel.swift
+//  DiscoverFollowingViewModel.swift
 //  NewsAPI
 //
 //  Created by Edem Ekeng on 2021-12-28.
 //
 
 import Foundation
-import Combine
 import Alamofire
 
-class NewsLandingViewModel : ObservableObject {
+class DiscoverFollowingViewModel : ObservableObject {
     
-    @Published var topHeadlines = [News]()
+    @Published var allNews = [News]()
     
-    @Published var apiResponse : NewsCompletion?
+    @Published var apiResponse : NewsCompletionResponse?
     
-    @Published var selectedNews : News?
+    @Published var following = [Following]()
     
-    func getTopHeadlines (sources: [Source], completion: @escaping (NewsCompletion) -> Void) {
+    func parsePerCell (source: [Source]) {
+        
+        var allFollowing = [Following]()
+        
+        for source in source {
+            
+            //allFollowing.append(Following(source: source, news: []))
+            
+            var follow : Following = Following(source: source, news: [])
+            
+            for news in allNews {
+                if news.news.source.id == source.id {
+                    follow.news.append(news)
+                }
+            }
+            
+            allFollowing.append(follow)
+            
+        }
+        
+        following = allFollowing
+        apiResponse?.success = true
+        
+    }
+    
+    func getRecentNews (sources: [Source], language: String) {
         
         let parameters = [
-           "sources" : Source.changeSourcesToString(sources: sources),
-            //"sources" : "bleacher-report,espn",
-            "pageSize" : 60,
-            "apiKey" : K.Keys.newsKey
+            "sources" : Source.changeSourcesToString(sources: sources),
+            "pageSize" : 100,
+            "apiKey" : K.Keys.newsKey,
+            "language" : language
         ] as [String : Any]
         
-        AF.request(K.URLs.topHeadings, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).response { [self] response in
+        let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.everything)
+        
+        apiUtil.getNews(sources: sources) { [self] response in
+            
+            apiResponse = response
+            
+            if response.success {
+                
+                allNews = apiUtil.news
+                
+                parsePerCell(source: sources)
+                
+                
+            } else {
+                print("I failed to get recent news")
+                apiResponse?.error = response.error
+                apiResponse?.success = false
+                
+            }
+            
+        }
+        
+        
+    }
+    
+}
+
+class APINewsUtility : ObservableObject {
+    
+    @Published var parameters = [String : Any]()
+    
+    @Published var url : String = ""
+    
+    
+    @Published var news = [News]()
+    
+    
+    init(_parameters: [String : Any], url: String) {
+        self.parameters = _parameters
+        self.url = url
+    }
+    
+    func getNews (sources: [Source], completion: @escaping (NewsCompletion) -> Void) {
+
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).response { [self] response in
             
             switch response.result {
                     
@@ -44,6 +112,7 @@ class NewsLandingViewModel : ObservableObject {
                             let decodedData = try JSONDecoder().decode(_News.self,
                                                                        from: data)
                             
+                            //print(decodedData)
                             let articles = decodedData.articles
                             
                             for article in articles {
@@ -65,7 +134,8 @@ class NewsLandingViewModel : ObservableObject {
                                 
                             }
                             
-                            topHeadlines = allNews
+                            news = allNews
+                            //topHeadlines = allNews
                             
                         } catch {
                             print(error)
@@ -92,12 +162,16 @@ class NewsLandingViewModel : ObservableObject {
         
     }
     
+}
+
+struct Following : Identifiable {
+    let id = UUID()
+    let source : Source
+    var news : [News]
+}
+
+extension Following {
+    
+    static let sample : [Following] = [(Following(source: Source.sampleSources[0], news: [News.sampleNews[0]]))]
     
 }
-
-struct NewsCompletion {
-    var success : Bool
-    var error : ErrorModel?
-}
-
-typealias NewsCompletionResponse = NewsCompletion

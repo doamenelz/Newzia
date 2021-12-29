@@ -8,35 +8,53 @@
 import SwiftUI
 
 struct DiscoverLandingScreen: View {
+    
+    @EnvironmentObject var userProfile : UserProfile
+    
     var body: some View {
-        ZStack {
-            
-            Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
-            
-            ScrollView {
-                VStack (spacing: 20) {
-                    DiscoverLandingHeader()
-                    
-                    DiscoverCell(label: "Categories you follow", image: AppAssets.SplashScreen.productTour1, countLabel: "5 Categories")
-                    
-                    DiscoverCell(label: "Sources you follow", image: AppAssets.SplashScreen.productTour2, countLabel: "3 Sources")
-                    
-                    DiscoverCell(label: "#Topics you follow", image: AppAssets.SplashScreen.productTour3, countLabel: "17 Topics")
-                    
-                    DiscoverCellCountry(label: "United States", news: News.sampleNews, image: AppAssets.SplashScreen.productTour1, country: "us")
-                    
-                    
-                    
+        NavigationView {
+            ZStack {
+                
+                Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
+                
+                ScrollView {
+                    VStack (spacing: 20) {
+                        DiscoverLandingHeader()
+                            .onTapGesture {
+                                print("Header tapped")
+                            }
+                        
+                        NavigationLink(destination: {
+                            DFollowingLandingScreen()
+                        }, label: {
+                            DiscoverCell(label: "Categories you follow", image: AppAssets.SplashScreen.productTour1, countLabel: "\(userProfile.categories.count) \(userProfile.categories.count > 1 ? "Categories" : "Category")")
+                        })
+                        
+                        
+                        DiscoverCell(label: "Sources you follow", image: AppAssets.SplashScreen.productTour2, countLabel: "\(userProfile.sources.count) \(userProfile.sources.count > 1 ? "Sources" : "Source")")
+                            .onTapGesture {
+                                print("Tapped")
+                            }
+                        
+                      DiscoverCell(label: "#Topics you follow", image: AppAssets.SplashScreen.productTour3, countLabel: "\(userProfile.categories.count >= 1 ? "\(userProfile.categories.count) \(userProfile.categories.count > 1 ? "Categories" : "Category")" : "You currently do not follow any Topic")")
+                        
+                        DiscoverCellCountry(label: userProfile.country.name, image: AppAssets.SplashScreen.productTour1, country: userProfile.country.code)
+                        
+                        
+                        
+                    }
+                    //.padding()
                 }
                 .padding()
             }
+            .hideNavigationBar()
         }
     }
 }
 
 struct DiscoverLandingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        DiscoverLandingScreen().preferredColorScheme(.dark)
+        DiscoverLandingScreen().environmentObject(UserProfile()).preferredColorScheme(.dark)
     }
 }
 

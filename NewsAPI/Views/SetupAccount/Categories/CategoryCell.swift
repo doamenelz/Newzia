@@ -16,7 +16,7 @@ struct CategoryCell: View {
     
     var body: some View {
         ZStack {
-            Image(category.type.rawValue)
+            Image(category.type)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: K.Dimensions.frameWidth / 2.3, height: K.Dimensions.frameHeight / 4)
@@ -37,7 +37,7 @@ struct CategoryCell: View {
                 Spacer()
                 
                 HStack {
-                    Text(category.type.rawValue)
+                    Text(category.type)
                         .modifier(FontModifier(color: .cWhite, size: .body, type: .bold))
                     Spacer()
                 }
@@ -48,11 +48,8 @@ struct CategoryCell: View {
             .modifier(BottomGradient())
         }
         .frame(width: K.Dimensions.frameWidth / 2.3, height: K.Dimensions.frameHeight / 4)
-        //.cornerRadius(30)
-        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        
+        .contentShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous) .strokeBorder(lineWidth: 5).foregroundColor(isSelected ? .cRed : .clear))
-        //.padding(.vertical, 10)
     }
 }
 
