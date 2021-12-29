@@ -27,26 +27,30 @@ extension Category {
     
     static func parseCategoryToEnum (category: String) -> CategoryTypes {
         
-        switch category {
-            case CategoryTypes.business.rawValue:
+        switch category.uppercased() {
+            case CategoryTypes.business.rawValue.uppercased():
                 return CategoryTypes.business
                 
-            case CategoryTypes.entertainment.rawValue:
+            case CategoryTypes.entertainment.rawValue.uppercased():
                 return CategoryTypes.entertainment
                 
-            case CategoryTypes.general.rawValue:
+            case CategoryTypes.general.rawValue.uppercased():
                 return CategoryTypes.general
                 
-            case CategoryTypes.health.rawValue:
+            case CategoryTypes.health.rawValue.uppercased():
                 return CategoryTypes.health
                 
-            case CategoryTypes.science.rawValue:
+            case CategoryTypes.science.rawValue.uppercased():
                 return CategoryTypes.science
                 
-            case CategoryTypes.technology.rawValue:
+            case CategoryTypes.technology.rawValue.uppercased():
                 return CategoryTypes.technology
                 
+            case CategoryTypes.sports.rawValue.uppercased():
+                return CategoryTypes.sports
+                
             default:
+                print("\(category) default --")
                 return CategoryTypes.general
         }
     }

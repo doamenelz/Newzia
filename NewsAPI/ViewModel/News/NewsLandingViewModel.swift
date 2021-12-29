@@ -15,19 +15,19 @@ class NewsLandingViewModel : ObservableObject {
     
     @Published var apiResponse : NewsCompletion?
     
+    @Published var selectedNews : News?
+    
     func getTopHeadlines (sources: [Source], completion: @escaping (NewsCompletion) -> Void) {
         
         let parameters = [
            "sources" : Source.changeSourcesToString(sources: sources),
             //"sources" : "bleacher-report,espn",
-            "pageSize" : 30,
+            "pageSize" : 60,
             "apiKey" : K.Keys.newsKey
         ] as [String : Any]
         
         AF.request(K.URLs.topHeadings, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).response { [self] response in
             
-            
-            print(response.request)
             switch response.result {
                     
                 case .success(_):
@@ -50,10 +50,13 @@ class NewsLandingViewModel : ObservableObject {
                             for article in articles {
                                 
                                 for source in sources {
+                                    
                                     if article.source.id != "" {
+                                        
                                         if article.source.id == source.id {
                                             let news = News(news: article, category: Category.parseCategoryToEnum(category: source.category), iconURL: source.url)
                                             allNews.append(news)
+                                            
                                         }
                                     } else {
                                         let news = News(news: article, category: .general, iconURL: "")
@@ -64,8 +67,6 @@ class NewsLandingViewModel : ObservableObject {
                             }
                             
                             topHeadlines = allNews
-                            //print(topHeadlines)
-                            
                             
                         } catch {
                             print(error)

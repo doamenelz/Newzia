@@ -78,6 +78,13 @@
 		490B05F4277AA56C00A761F7 /* APIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05F3277AA56C00A761F7 /* APIUtility.swift */; };
 		490B05F7277AA5EB00A761F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 490B05F6277AA5EB00A761F7 /* Alamofire */; };
 		490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */; };
+		490B05FC277B8B9D00A761F7 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05FB277B8B9D00A761F7 /* NewsCell.swift */; };
+		490B05FE277B8C3400A761F7 /* NewsLandingHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05FD277B8C3400A761F7 /* NewsLandingHero.swift */; };
+		490B0600277BC0F500A761F7 /* NewsWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05FF277BC0F400A761F7 /* NewsWebView.swift */; };
+		490B0602277BC3B000A761F7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0601277BC3B000A761F7 /* WebView.swift */; };
+		490B0605277BD9ED00A761F7 /* DiscoverLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0604277BD9ED00A761F7 /* DiscoverLandingScreen.swift */; };
+		490B0607277BF39C00A761F7 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0606277BF39C00A761F7 /* DiscoverCell.swift */; };
+		490B0609277BF83000A761F7 /* DFollowingLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +178,13 @@
 		490B05F1277A854700A761F7 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		490B05F3277AA56C00A761F7 /* APIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtility.swift; sourceTree = "<group>"; };
 		490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLandingViewModel.swift; sourceTree = "<group>"; };
+		490B05FB277B8B9D00A761F7 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		490B05FD277B8C3400A761F7 /* NewsLandingHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLandingHero.swift; sourceTree = "<group>"; };
+		490B05FF277BC0F400A761F7 /* NewsWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebView.swift; sourceTree = "<group>"; };
+		490B0601277BC3B000A761F7 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		490B0604277BD9ED00A761F7 /* DiscoverLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverLandingScreen.swift; sourceTree = "<group>"; };
+		490B0606277BF39C00A761F7 /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
+		490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFollowingLandingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +301,7 @@
 				490B05952775ACC200A761F7 /* TextFields.swift */,
 				490B05D12778117300A761F7 /* ImagePicker.swift */,
 				490B05E7277985BB00A761F7 /* CustomTab.swift */,
+				490B0601277BC3B000A761F7 /* WebView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -305,6 +320,7 @@
 		490B0562277571F700A761F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				490B0603277BD9D800A761F7 /* Discover */,
 				490B05EC277A721600A761F7 /* News */,
 				490B05E92779906300A761F7 /* BaseViews */,
 				490B05AE277647F900A761F7 /* SetupAccount */,
@@ -490,7 +506,10 @@
 		490B05EC277A721600A761F7 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				490B05FB277B8B9D00A761F7 /* NewsCell.swift */,
+				490B05FD277B8C3400A761F7 /* NewsLandingHero.swift */,
 				490B05ED277A747D00A761F7 /* NewsLandingScreen.swift */,
+				490B05FF277BC0F400A761F7 /* NewsWebView.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -501,6 +520,16 @@
 				490B05F9277AE12B00A761F7 /* NewsLandingViewModel.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		490B0603277BD9D800A761F7 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				490B0604277BD9ED00A761F7 /* DiscoverLandingScreen.swift */,
+				490B0606277BF39C00A761F7 /* DiscoverCell.swift */,
+				490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */,
+			);
+			path = Discover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,8 +707,11 @@
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
 				490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */,
 				490B05992775B38700A761F7 /* SignInViewModel.swift in Sources */,
+				490B0609277BF83000A761F7 /* DFollowingLandingScreen.swift in Sources */,
+				490B0600277BC0F500A761F7 /* NewsWebView.swift in Sources */,
 				490B05C12776DDDE00A761F7 /* Gradients.swift in Sources */,
 				490B05A727763BED00A761F7 /* ResetPasswordViewModel.swift in Sources */,
+				490B05FC277B8B9D00A761F7 /* NewsCell.swift in Sources */,
 				490B05BD2776CEAE00A761F7 /* CategoriesSetupScreen.swift in Sources */,
 				490B05E627797F8A00A761F7 /* GuestOverlayScreen.swift in Sources */,
 				490B05BB2776CCF400A761F7 /* SourcesSetupScreen.swift in Sources */,
@@ -695,11 +727,15 @@
 				490B059B2775B78E00A761F7 /* SignInStack.swift in Sources */,
 				490B058B277596D400A761F7 /* Buttons.swift in Sources */,
 				490B057027757AB300A761F7 /* ProductTourScreen.swift in Sources */,
+				490B05FE277B8C3400A761F7 /* NewsLandingHero.swift in Sources */,
+				490B0607277BF39C00A761F7 /* DiscoverCell.swift in Sources */,
+				490B0605277BD9ED00A761F7 /* DiscoverLandingScreen.swift in Sources */,
 				490B05A52776380200A761F7 /* CodeVerificationScreen.swift in Sources */,
 				490B058E2775987700A761F7 /* LoginOptionScreen.swift in Sources */,
 				490B05C32776E9C400A761F7 /* BlurView.swift in Sources */,
 				490B05942775A6A800A761F7 /* NavigationHeader.swift in Sources */,
 				490B05682775773800A761F7 /* Assets.swift in Sources */,
+				490B0602277BC3B000A761F7 /* WebView.swift in Sources */,
 				490B05362775718A00A761F7 /* NewsAPIApp.swift in Sources */,
 				490B056E2775790F00A761F7 /* Constants.swift in Sources */,
 				490B05F4277AA56C00A761F7 /* APIUtility.swift in Sources */,

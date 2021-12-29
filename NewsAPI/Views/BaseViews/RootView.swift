@@ -14,23 +14,34 @@ struct RootView: View {
     @State private var selectedTab : TabSelectors = .home
     
     var body: some View {
-        
-        NavigationView {
+//
+//        NavigationView {
+            
             ZStack {
-                
                 Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
                 
-                if selectedTab == .home {
-                    NewsLandingScreen()
-                } else if selectedTab == .search {
-                    Text("Search")
-                } else if selectedTab == .bookmark {
-                    Text("Bookmark")
-                } else {
-                    Text("Profile")
-                }
                 
+            NewsLandingScreen()
+                    .opacity(selectedTab == .home ? 1 : 0)
                 
+                DiscoverLandingScreen()
+                    .opacity(selectedTab == .search ? 1 : 0)
+                
+                Text("Bookmark")
+                    .opacity(selectedTab == .bookmark ? 1 : 0)
+                
+                Text("Profile")
+                    .opacity(selectedTab == .person ? 1 : 0)
+               
+//                if selectedTab == .home {
+//                    NewsLandingScreen()
+//                } else if selectedTab == .search {
+//                    Text("Search")
+//                } else if selectedTab == .bookmark {
+//                    Text("Bookmark")
+//                } else {
+//                    Text("Profile")
+//                }
                 
                 VStack {
                     Spacer()
@@ -42,7 +53,7 @@ struct RootView: View {
             }
             .environmentObject(userProfile)
             
-        }
+        //}
         
     }
 }

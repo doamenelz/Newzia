@@ -15,18 +15,12 @@ struct ContentView: View {
    
     
     var body: some View {
-        ProductTourScreen()
+        //ProductTourScreen()
+        DiscoverLandingScreen()
             .environmentObject(userProfile)
             .onAppear(perform: {
                 
             })
-//            .onAppear(perform: {
-//
-//                apiUtility.getTopHeadlines(sources: [Source(id: "bbc-news", name: "BBC News", description: "Description", url: "www.bbc.com", category: "General", language: "en", country: "gb")])
-//
-//
-//
-//            })
     }
 }
 

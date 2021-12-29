@@ -17,6 +17,11 @@ struct NewsLandingScreen: View {
     
     @State private var isLoading : Bool = true
     
+    @State private var selectedCategory : String = "Latest"
+    
+    @State private var openURLView : Bool = false
+    
+    
     var body: some View {
         
             ZStack {
@@ -31,36 +36,19 @@ struct NewsLandingScreen: View {
                     
                     if viewModel.apiResponse!.success {
                         
-                        ScrollView {
+                        VStack {
                             
-                            VStack (spacing: 20) {
-                                
-                                HStack {
-                                    Image(AppAssets.SplashScreen.text)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: SystemIcons.bell.rawValue)
-                                        .padding(.horizontal)
-                                }
-                                
-                                
-                                if !viewModel.topHeadlines.isEmpty {
-                                    
-                                    NewsLandingHero(news: viewModel.topHeadlines.first!)
-                                    
-                                    LazyVStack (spacing: 15) {
-                                        ForEach(viewModel.topHeadlines) { news in
-                                            NewsCell(news: news)
-                                        }
-                                    }
-                                    
-                                }
-                                
-                            }
-                            .padding()
-                            .padding(.bottom, 40)
+                            NewsLandingHeader()
+                            
+                            SectionHeader(selectedCategory: $selectedCategory)
+                            
+                            NewsList(viewModel: viewModel, selectedCategory: $selectedCategory, openURLView: $openURLView)
+                            
+                            
+                            
                         }
+                        .padding()
+                        
                         
                         
                     } else {
@@ -70,9 +58,9 @@ struct NewsLandingScreen: View {
                    
                 }
                 
-                
             }
             .onAppear(perform: {
+                
                 if viewModel.apiResponse == nil {
                     viewModel.getTopHeadlines(sources: userProfile.sources, completion: { response in
                         
@@ -83,6 +71,7 @@ struct NewsLandingScreen: View {
                     })
                 }
                 
+                
             })
             .hideNavigationBar()
         
@@ -92,122 +81,161 @@ struct NewsLandingScreen: View {
 
 struct NewsLandingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NewsLandingScreen()//.preferredColorScheme(.dark)
+        NewsLandingScreen().environmentObject(UserProfile())//.preferredColorScheme(.dark)
     }
 }
 
-struct HeroGradient : ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .background(LinearGradient(gradient: Gradient(colors: [.clear, Color.black]), startPoint: .top, endPoint: .bottom))
-    }
-}
 
-struct NewsLandingHero: View {
+
+
+struct FilterTab: View {
     
-    var news : News
+    var label : String
+    
+    var isSelected : Bool
     
     var body: some View {
-        
-        ZStack {
+        Text(label)
+            .modifier(FontModifier(color: isSelected ? .white : .darkGreySoft, size: .label, type: isSelected ? .bold : .medium))
+            .padding(.horizontal, 15)
+            .padding(.vertical, 10)
+            .background(isSelected ? Color.blueRed : .clear)
+            .cornerRadius(20)
+    }
+}
+
+struct CategoryFilter: View {
+    
+    var label : String
+    var isSelected : Bool
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            FilterTab(label: label, isSelected: isSelected)
+            Spacer()
+            Divider()
+                .frame(height: 24)
+        }
+        .frame(maxWidth: K.Dimensions.frameWidth / 3)
+    }
+}
+
+
+//MARK: - Internal Components -
+
+fileprivate struct SectionHeader: View {
+    
+    @Binding var selectedCategory : String
+    
+    @EnvironmentObject var userProfile : UserProfile
+    
+    var body: some View {
+        ScrollView (.horizontal, showsIndicators: false) {
             
-            WebImage(url: URL(string: news.news.urlToImage))
-                .resizable()
-                .placeholder(Image(AppAssets.SplashScreen.icon))
-                .aspectRatio(contentMode: .fill)
-                .transition(.fade(duration: 0.5))
-                .frame(width: K.Dimensions.frameWidth - 40, height: K.Dimensions.frameHeight / 2)
-            
-            
-            VStack (alignment: .leading, spacing: 20) {
+            HStack {
                 
-                HStack {
-                    Spacer()
-                    Image(systemName: SystemIcons.bookmark.rawValue)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 40, height: 40)
-                        .background(Color.cRed)
-                        .cornerRadius(10)
+                CategoryFilter(label: "Latest", isSelected: selectedCategory.uppercased() == "Latest".uppercased() ? true : false)
+                    .onTapGesture {
+                        //withAnimation {
+                            selectedCategory = "Latest"
+                        //}
+                    }
+                
+                ForEach(userProfile.categories) { category in
+                    CategoryFilter(label: category.type.rawValue, isSelected: selectedCategory.uppercased() == category.type.rawValue.uppercased())
+                        .onTapGesture {
+                           // withAnimation {
+                                selectedCategory = category.type.rawValue
+                           // }
+                        }
                 }
                 
-                Spacer()
-                
-                HStack {
-                    Text(news.category.rawValue)
-                        .modifier(FontModifier(color: .white, size: .label, type: .medium))
-                        .padding(.horizontal, 15)
-                        .padding(.vertical, 5)
-                        .background(Color.cBlueMedium)
-                        .cornerRadius(20)
-                    Spacer()
-                }
-                
-                Text(news.news.title)
-                    .modifier(FontModifier(color: .white, size: .large, type: .bold))
-                
-                HStack {
-                    WebImage(url: URL(string: K.URLs.clearBit + news.iconURL))
-                        .resizable()
-                        .placeholder(Image(systemName: SystemIcons.newsIconPlaceholder.rawValue))
-                        .foregroundColor(.cBlueMedium)
-                        .background(Color.cWhite)
-                        .transition(.fade(duration: 0.5))
-                        .frame(width: 25, height: 25)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                    
-                    Text(news.news.source.name.uppercased())
-                        .modifier(FontModifier(color: .white, size: .body, type: .bold))
-                    
-                    Spacer()
-                    
-                    Text("3 Hours ago")
-                        .modifier(FontModifier(color: .white, size: .label, type: .regular))
-                }
                 
             }
-            .padding()
+            .padding(.top)
             .padding(.bottom, 10)
-            .modifier(HeroGradient())
             
             
         }
-        .frame(height: K.Dimensions.frameHeight / 2)
-        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
     }
 }
 
-struct NewsCell: View {
-    
-    var news : News
-    
+fileprivate struct NewsLandingHeader: View {
     var body: some View {
-        
         HStack {
-            WebImage(url: URL(string: news.news.urlToImage))
-                .resizable()
-                .placeholder(Image(systemName: SystemIcons.newsIconPlaceholder.rawValue))
-                .aspectRatio(contentMode: .fill)
-                .transition(.fade(duration: 0.5))
-                .frame(width: 80, height: 92)
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Text(news.news.source.name)
-                    .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
-                Text(news.news.title)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(2)
-                    .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .bold))
-                Text("30 min ago")
-                    .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .light))
-            }
+            Image(AppAssets.SplashScreen.text)
             
             Spacer()
+            
+            Image(systemName: SystemIcons.bell.rawValue)
+                .padding(.horizontal)
         }
-        .padding()
-        .background(Color.greyLBlueMedDark)
-        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .padding(.leading)
+    }
+}
+
+fileprivate struct NewsList: View {
+    
+    @ObservedObject var viewModel : NewsLandingViewModel
+    
+    @Binding var selectedCategory : String
+    
+    @Binding var openURLView : Bool
+    
+    var body: some View {
+        ScrollView {
+            
+            VStack (spacing: 20) {
+                
+                if !viewModel.topHeadlines.isEmpty {
+                    
+                    NewsLandingHero(news: selectedCategory == "Latest".uppercased() ? viewModel.topHeadlines.first! : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()}).first ?? viewModel.topHeadlines.first!)
+                        .onTapGesture {
+                            DispatchQueue.main.async {
+                                viewModel.selectedNews = viewModel.topHeadlines.first!
+                            }
+                            
+                            if viewModel.topHeadlines.first!.news.url != "" {
+                                openURLView.toggle()
+                            }
+                            
+                        }
+                    
+                    LazyVStack (spacing: 15) {
+                        
+                        ForEach(selectedCategory == "Latest" ? viewModel.topHeadlines : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()})) { news in
+                            
+                            NewsCell(news: news)
+                                .onTapGesture {
+                                    
+                                    DispatchQueue.main.async {
+                                        viewModel.selectedNews = news
+                                    }
+                                    
+                                    
+                                    
+                                    if news.news.url != "" {
+                                        openURLView.toggle()
+                                    }
+                                    
+                                }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            .padding(.horizontal)
+            //.padding()
+            .padding(.bottom, 40)
+        }
+        .sheet(isPresented: $openURLView, onDismiss: {
+            
+        }, content: {
+            NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "https://www.apple.com")
+        })
     }
 }

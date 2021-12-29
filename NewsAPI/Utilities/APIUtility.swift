@@ -96,34 +96,6 @@ class APIUtility : ObservableObject {
     
 }
 
-struct NewsResponse {
-    
-    let news : News?
-    let error : ErrorModel?
-    
-    
-    
-}
 
-struct _News : Codable {
-    var totalResults : Int
-    var articles : [_Articles]
-}
-
-struct _Articles : Codable {
-    var source : _Source
-    var author : String?
-    var title : String
-    var description : String
-    var url : String
-    var urlToImage : String
-    var publishedAt : String
-    var content : String?
-}
-
-struct _Source : Codable {
-    var id : String?
-    var name : String
-}
 
 

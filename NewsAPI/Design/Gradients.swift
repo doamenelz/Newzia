@@ -21,3 +21,11 @@ struct BottomGradient : ViewModifier {
             .background(LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.1), Color.black]), startPoint: .top, endPoint: .bottom))
     }
 }
+
+struct HeroGradient : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(LinearGradient(gradient: Gradient(colors: [.clear, Color.black]), startPoint: .top, endPoint: .bottom))
+    }
+}
+
