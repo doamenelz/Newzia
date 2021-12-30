@@ -25,20 +25,29 @@ struct DiscoverLandingScreen: View {
                             }
                         
                         NavigationLink(destination: {
-                            DFollowingLandingScreen()
+                            DiscoverCategoriesLanding()
                         }, label: {
                             DiscoverCell(label: "Categories you follow", image: AppAssets.SplashScreen.productTour1, countLabel: "\(userProfile.categories.count) \(userProfile.categories.count > 1 ? "Categories" : "Category")")
                         })
                         
+                        NavigationLink(destination: {
+                            DFollowingLandingScreen()
+                        }, label: {
+                            DiscoverCell(label: "Sources you follow", image: AppAssets.SplashScreen.productTour2, countLabel: "\(userProfile.sources.count) \(userProfile.sources.count > 1 ? "Sources" : "Source")")
+                        })
                         
-                        DiscoverCell(label: "Sources you follow", image: AppAssets.SplashScreen.productTour2, countLabel: "\(userProfile.sources.count) \(userProfile.sources.count > 1 ? "Sources" : "Source")")
-                            .onTapGesture {
-                                print("Tapped")
-                            }
-                        
+                                                
                       DiscoverCell(label: "#Topics you follow", image: AppAssets.SplashScreen.productTour3, countLabel: "\(userProfile.categories.count >= 1 ? "\(userProfile.categories.count) \(userProfile.categories.count > 1 ? "Categories" : "Category")" : "You currently do not follow any Topic")")
                         
-                        DiscoverCellCountry(label: userProfile.country.name, image: AppAssets.SplashScreen.productTour1, country: userProfile.country.code)
+                        
+                        NavigationLink(destination: {
+                            
+                            CountryNewsPage(country: userProfile.country)
+                            
+                        }, label: {
+                            DiscoverCellCountry(label: userProfile.country.name, image: AppAssets.SplashScreen.productTour1, country: userProfile.country.code)
+                        })
+                        
                         
                         
                         

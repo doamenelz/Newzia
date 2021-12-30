@@ -114,7 +114,7 @@ struct CustomTabBar: View {
         .padding(.horizontal)
         //.padding()
         
-        .padding(.bottom)
+        .padding(.bottom, 30)
         .background(Color.whiteBlueDark.opacity(0.1))
         .background(VisualEffectBlur(blurStyle: .regular))
         

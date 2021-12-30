@@ -12,6 +12,8 @@ struct NewsLandingHero: View {
     
     var news : News
     
+    var small : Bool
+    
     var body: some View {
         
         ZStack {
@@ -21,7 +23,7 @@ struct NewsLandingHero: View {
                 .placeholder(Image(AppAssets.SplashScreen.icon))
                 .aspectRatio(contentMode: .fill)
                 .transition(.fade(duration: 0.5))
-                .frame(width: K.Dimensions.frameWidth - 40, height: K.Dimensions.frameHeight / 2)
+                .frame(width: K.Dimensions.frameWidth - 40, height: small ? K.Dimensions.frameHeight / 3 : K.Dimensions.frameHeight / 2)
             
             
             VStack (alignment: .leading, spacing: 20) {
@@ -78,7 +80,7 @@ struct NewsLandingHero: View {
             
             
         }
-        .frame(height: K.Dimensions.frameHeight / 2)
+        .frame(height: small ? K.Dimensions.frameHeight / 3 : K.Dimensions.frameHeight / 2)
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
     }
 }
@@ -86,6 +88,6 @@ struct NewsLandingHero: View {
 
 struct NewsLandingHero_Previews: PreviewProvider {
     static var previews: some View {
-        NewsLandingHero(news: News.sampleNews[0])
+        NewsLandingHero(news: News.sampleNews[0], small: true)
     }
 }

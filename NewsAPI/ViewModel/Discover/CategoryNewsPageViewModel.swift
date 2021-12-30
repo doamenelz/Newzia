@@ -1,32 +1,30 @@
 //
-//  DiscoverFollowingViewModel.swift
+//  CategoryNewsPageViewModel.swift
 //  NewsAPI
 //
-//  Created by Edem Ekeng on 2021-12-28.
+//  Created by Edem Ekeng on 2021-12-30.
 //
 
 import Foundation
-import Alamofire
 
-class SourcesProfilePageViewModel : ObservableObject {
+
+class CategoryNewsPageViewModel : ObservableObject {
     
     @Published var allNews = [News]()
     
     @Published var apiResponse : NewsCompletionResponse?
     
     @Published var selectedNews : News?
-
     
-    func topHeadlines (sources: [Source], language: String) {
+    func topHeadlines (sources: [Source]) {
         
         let parameters = [
             "sources" : Source.changeSourcesToString(sources: sources),
             "pageSize" : 100,
             "apiKey" : K.Keys.newsKey,
-            "language" : language
         ] as [String : Any]
         
-        let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.everything)
+        let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.topHeadings)
         
         apiUtil.getNews(sources: sources) { [self] response in
             
@@ -51,27 +49,5 @@ class SourcesProfilePageViewModel : ObservableObject {
         
     }
     
-    func checkForFollow (source: Source, sources: [Source]) -> Bool {
-        
-        if sources.contains(where: {$0.id == source.id}) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-        
-}
-
-
-struct Following : Identifiable {
-    let id = UUID()
-    let source : Source
-    var news : [News]
-}
-
-extension Following {
-    
-    static let sample : [Following] = [(Following(source: Source.sampleSources[0], news: [News.sampleNews[0]]))]
     
 }

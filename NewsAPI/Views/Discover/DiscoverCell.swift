@@ -69,7 +69,7 @@ struct DiscoverCellCountry: View {
             
             VStack (alignment: .leading, spacing: 5) {
                 Spacer()
-                Image(country)
+                Image(country.lowercased())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 24)

@@ -20,7 +20,7 @@ struct NavigationHeader: View {
             HStack {
                 
                 Image(systemName: SystemIcons.arrowRight.rawValue)
-                    .padding(.vertical)
+                    .padding([.trailing, .vertical])
                     .onTapGesture {
                         presentationMode.wrappedValue.dismiss()
                     }

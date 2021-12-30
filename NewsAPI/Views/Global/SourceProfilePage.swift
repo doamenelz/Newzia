@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 
 struct SourceProfilePage: View {
     
+    @EnvironmentObject var userProfile : UserProfile
+    
     var source : Source
     
     @StateObject var viewModel = SourcesProfilePageViewModel()
@@ -42,12 +44,43 @@ struct SourceProfilePage: View {
                                 .modifier(FontModifier(color: .darkGreySoft, size: .large, type: .bold))
                             Text(source.category.capitalized)
                                 .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .medium))
-                            Text("+ Follow")
-                                .modifier(FontModifier(color: .white, size: .body, type: .medium))
-                                .padding(.vertical, 10)
+                            Text(viewModel.checkForFollow(source: source, sources: userProfile.sources) ? "Following" : "+ Follow")
+                                .modifier(FontModifier(color: viewModel.checkForFollow(source: source, sources: userProfile.sources) ? .greyLBlueMedDark : .white, size: .body, type: .medium))
+                                .padding(.vertical, 5)
                                 .padding(.horizontal, 40)
-                                .background(Color.cRed)
+                                .background(viewModel.checkForFollow(source: source, sources: userProfile.sources) ? Color.darkGreySoft : Color.cRed)
                                 .cornerRadius(20, antialiased: true)
+                                .onTapGesture {
+                                    
+                                    if viewModel.checkForFollow(source: source, sources: userProfile.sources) {
+                                        //Unfollow
+                                        
+                                        DispatchQueue.main.async {
+                                            userProfile.sources.removeAll(where: {$0.id == source.id})
+                                        }
+                                        
+                                        DispatchQueue.global(qos: .userInitiated).async {
+                                            Source.persistSource(sources: userProfile.sources)
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                    } else {
+                                        
+                                        DispatchQueue.main.async {
+                                            userProfile.sources.append(source)
+                                        }
+                                        
+                                        DispatchQueue.global(qos: .userInitiated).async {
+                                            Source.persistSource(sources: userProfile.sources)
+                                            
+                                        }
+                                        
+                                        //Follow
+                                    }
+                                    
+                                }
                         }
                         
                         Spacer()
@@ -90,33 +123,14 @@ struct SourceProfilePage: View {
                                 Spacer()
                             }
                             .padding([.leading, .top])
-                            LazyVStack (spacing: 20) {
-                                ForEach(viewModel.allNews) { news in
+                            
+                            NewsListItems(allNews: viewModel.allNews, selectedNews: $viewModel.selectedNews, openURLView: $openURLView, hideFirst: false)
+                                .sheet(isPresented: $openURLView, onDismiss: {
                                     
-                                    NewsCell(news: news)
-                                        .onTapGesture {
-                                            
-                                            DispatchQueue.main.async {
-                                                viewModel.selectedNews = news
-                                            }
-                                            
-                                            
-                                            
-                                            if news.news.url != "" {
-                                                openURLView.toggle()
-                                            }
-                                            
-                                        }
-                                        .sheet(isPresented: $openURLView, onDismiss: {
-                                            
-                                        }, content: {
-                                            NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "https://www.apple.com")
-                                        })
-                                    
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 60)
+                                }, content: {
+                                    NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "https://www.apple.com")
+                                })
+                            
                         }
                     }
                     
@@ -136,6 +150,6 @@ struct SourceProfilePage: View {
 
 struct SourceProfilePage_Previews: PreviewProvider {
     static var previews: some View {
-        SourceProfilePage(source: Source.sampleSources[0]).preferredColorScheme(.dark)
+        SourceProfilePage(source: Source.sampleSources[0]).environmentObject(UserProfile()).preferredColorScheme(.light)
     }
 }

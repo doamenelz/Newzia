@@ -193,7 +193,7 @@ fileprivate struct NewsList: View {
                 
                 if !viewModel.topHeadlines.isEmpty {
                     
-                    NewsLandingHero(news: selectedCategory == "Latest".uppercased() ? viewModel.topHeadlines.first! : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()}).first ?? viewModel.topHeadlines.first!)
+                    NewsLandingHero(news: selectedCategory == "Latest".uppercased() ? viewModel.topHeadlines.first! : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()}).first ?? viewModel.topHeadlines.first!, small: false)
                         .onTapGesture {
                             DispatchQueue.main.async {
                                 viewModel.selectedNews = viewModel.topHeadlines.first!
@@ -205,28 +205,8 @@ fileprivate struct NewsList: View {
                             
                         }
                     
-                    LazyVStack (spacing: 15) {
-                        
-                        ForEach(selectedCategory == "Latest" ? viewModel.topHeadlines : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()})) { news in
-                            
-                            NewsCell(news: news)
-                                .onTapGesture {
-                                    
-                                    DispatchQueue.main.async {
-                                        viewModel.selectedNews = news
-                                    }
-                                    
-                                    
-                                    
-                                    if news.news.url != "" {
-                                        openURLView.toggle()
-                                    }
-                                    
-                                }
-                            
-                        }
-                        
-                    }
+                    
+                    NewsListItems(allNews: selectedCategory == "Latest" ? viewModel.topHeadlines : viewModel.topHeadlines.filter({$0.category.rawValue.uppercased() == selectedCategory.uppercased()}), selectedNews: $viewModel.selectedNews, openURLView: $openURLView, hideFirst: true)
                     
                 }
                 

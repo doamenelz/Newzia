@@ -20,6 +20,7 @@ struct CategoryCell: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: K.Dimensions.frameWidth / 2.3, height: K.Dimensions.frameHeight / 4)
+                .contentShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
            
             VStack {
                 
@@ -48,7 +49,8 @@ struct CategoryCell: View {
             .modifier(BottomGradient())
         }
         .frame(width: K.Dimensions.frameWidth / 2.3, height: K.Dimensions.frameHeight / 4)
-        .contentShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+//        .contentShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous) .strokeBorder(lineWidth: 5).foregroundColor(isSelected ? .cRed : .clear))
     }
 }
