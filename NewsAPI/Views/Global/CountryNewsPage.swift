@@ -36,7 +36,7 @@ struct CountryNewsPage: View {
                     VStack {
                         
                         HStack {
-                            Text("Canada")
+                            Text(userProfile.country.name)
                                 .modifier(FontModifier(color: .darkGreySoft, size: .large, type: .bold))
                             Image(country.code.lowercased())
                                 .resizable()

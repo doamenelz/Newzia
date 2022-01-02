@@ -13,15 +13,12 @@ class UserProfile : ObservableObject {
     
     //@Published var name : String = ""
     @Published var country : Country = Country.getCountryFromUD() ?? Country(name: "United States", code: "us")
+    
     @Published var categories : [Category] = Category.getCategoriesFromUD()
+    
     @Published var sources : [Source] = Source.getSourcesFromUD()
-    //@Published var username : String = ""
+    
     @Published var avatar = UIImage()
-    //@Published var email : String = ""
-    
-    //@Published var isSignedIn : Bool = false
-    
-    //@Published var preferredNewsLanguage : String = "en"
     
     func setUserProfile (categories: [Category], sources: [Source], avatar: UIImage, username: String, country: Country) {
         self.categories = categories
@@ -53,7 +50,28 @@ class UserProfile : ObservableObject {
         
     }
     
+    @Published var topics : [String] = UserDefaults.standard.stringArray(forKey: _UserProfileKeys.topics) ?? [] {
+        didSet {
+            UserDefaults.standard.set(self.topics, forKey: _UserProfileKeys.topics)
+        }
+        
+    }
     
+    @Published var recentSearches : [String] = UserDefaults.standard.stringArray(forKey: _UserProfileKeys.recentSearches) ?? [] {
+        didSet {
+            UserDefaults.standard.set(self.recentSearches, forKey: _UserProfileKeys.recentSearches)
+        }
+
+    }
+    
+    @Published var language : String = UserDefaults.standard.string(forKey: _UserProfileKeys.language) ?? "en" {
+        didSet {
+            UserDefaults.standard.set(self.language, forKey: _UserProfileKeys.language)
+        }
+        
+    }
+    
+    //@Published var recentSearches = ["Indonesia", "global", "pandemic"]
     
     @Published var name : String = UserDefaults.standard.string(forKey: _UserProfileKeys.name) ?? "" {
         didSet {
@@ -89,9 +107,6 @@ class UserProfile : ObservableObject {
         
     }
 
-    
-    
-    
 }
 
 
@@ -105,6 +120,9 @@ enum _UserProfileKeys {
     static let preferredNewsLanguage = "preferredNewsLanguage"
     static let email = "email"
     static let categories = "categories"
+    static let topics = "topics"
+    static let recentSearches = "recentSearches"
+    static let language = "language"
     
 }
 

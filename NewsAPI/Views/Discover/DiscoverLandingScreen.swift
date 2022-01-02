@@ -92,10 +92,13 @@ fileprivate struct DiscoverLandingHeader: View {
             }
             Spacer()
             
-            Image(systemName: SystemIcons.search.rawValue)
-                .padding()
-            //.font(.title2)
-            
+            NavigationLink(destination: {
+                SearchPageLanding()
+            }, label: {
+                Image(systemName: SystemIcons.search.rawValue)
+                    .padding()
+                    .foregroundColor(.darkGreySoft)
+            })
             
         }
     }
