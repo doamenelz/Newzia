@@ -10,9 +10,6 @@ import Combine
 import SwiftUI
 
 class UserProfile : ObservableObject {
-    
-    
-    
     //@Published var name : String = ""
     @Published var country : Country = Country.getCountryFromUD() ?? Country(name: "United States", code: "us")
     
@@ -108,6 +105,7 @@ class UserProfile : ObservableObject {
         
     }
 
+    @Published var bookmarks = News.getBookmarkFromUD()
 }
 
 
@@ -124,6 +122,7 @@ enum _UserProfileKeys {
     static let topics = "topics"
     static let recentSearches = "recentSearches"
     static let language = "language"
+    static let bookmarks = "bookmarks"
     
 }
 

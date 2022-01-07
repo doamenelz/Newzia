@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		490365872787CEB8007E8F7A /* TopicDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490365862787CEB8007E8F7A /* TopicDetailsScreen.swift */; };
 		490365892787CF90007E8F7A /* TopicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490365882787CF90007E8F7A /* TopicsViewModel.swift */; };
+		4903658C2787E13D007E8F7A /* BookmarksLandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4903658B2787E13D007E8F7A /* BookmarksLandingScreen.swift */; };
+		4903658E2787EB14007E8F7A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4903658D2787EB14007E8F7A /* BookmarkViewModel.swift */; };
 		490B05362775718A00A761F7 /* NewsAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05352775718A00A761F7 /* NewsAPIApp.swift */; };
 		490B05382775718A00A761F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05372775718A00A761F7 /* ContentView.swift */; };
 		490B053A2775718C00A761F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490B05392775718C00A761F7 /* Assets.xcassets */; };
@@ -124,6 +126,8 @@
 /* Begin PBXFileReference section */
 		490365862787CEB8007E8F7A /* TopicDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsScreen.swift; sourceTree = "<group>"; };
 		490365882787CF90007E8F7A /* TopicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewModel.swift; sourceTree = "<group>"; };
+		4903658B2787E13D007E8F7A /* BookmarksLandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksLandingScreen.swift; sourceTree = "<group>"; };
+		4903658D2787EB14007E8F7A /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		490B05322775718A00A761F7 /* NewsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		490B05352775718A00A761F7 /* NewsAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIApp.swift; sourceTree = "<group>"; };
 		490B05372775718A00A761F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,6 +252,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4903658A2787E125007E8F7A /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				4903658B2787E13D007E8F7A /* BookmarksLandingScreen.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
 		490B05292775718A00A761F7 = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +367,7 @@
 		490B0562277571F700A761F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4903658A2787E125007E8F7A /* Bookmarks */,
 				490B0611277D03E700A761F7 /* Global */,
 				490B0603277BD9D800A761F7 /* Discover */,
 				490B05EC277A721600A761F7 /* News */,
@@ -376,6 +389,7 @@
 				490B05872775861C00A761F7 /* IntroScreens */,
 				490B05972775B36E00A761F7 /* Login */,
 				490B05AD2776419400A761F7 /* ForgotPassword */,
+				4903658D2787EB14007E8F7A /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -775,6 +789,7 @@
 				490B05D7277829B700A761F7 /* UserProfile.swift in Sources */,
 				490B05E42779643400A761F7 /* CountryCell.swift in Sources */,
 				490B0625277E631400A761F7 /* SearchPageLanding.swift in Sources */,
+				4903658C2787E13D007E8F7A /* BookmarksLandingScreen.swift in Sources */,
 				495F85A12783A3E000DD4C02 /* TopicsListingPage.swift in Sources */,
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
 				490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */,
@@ -792,6 +807,7 @@
 				490B05BB2776CCF400A761F7 /* SourcesSetupScreen.swift in Sources */,
 				490B05892775863000A761F7 /* ProductTourViewModel.swift in Sources */,
 				490B05B92776B7FB00A761F7 /* AccountSetupViewModel.swift in Sources */,
+				4903658E2787EB14007E8F7A /* BookmarkViewModel.swift in Sources */,
 				490B05D42778205100A761F7 /* Animations.swift in Sources */,
 				490B05C52776ED1500A761F7 /* CategoryCell.swift in Sources */,
 				490B05962775ACC200A761F7 /* TextFields.swift in Sources */,

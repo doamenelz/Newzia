@@ -90,7 +90,7 @@ struct TopicDetailsScreen: View {
                 .sheet(isPresented: $openURLView, onDismiss: {
                     
                 }, content: {
-                    NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "www.apple.com")
+                    NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "www.apple.com", news: viewModel.selectedNews)
                 })
                 
             }

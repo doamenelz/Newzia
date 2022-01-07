@@ -61,7 +61,7 @@ struct CategoryNewsPage: View {
                                         .sheet(isPresented: $openURLView, onDismiss: {
                                             
                                         }, content: {
-                                            NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "https://www.apple.com")
+                                            NewsWebView(dismiss: $openURLView, webLink: viewModel.selectedNews?.news.url ?? "https://www.apple.com", news: viewModel.selectedNews)
                                         })
                                     
                                     HStack {

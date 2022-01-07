@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 
 struct NewsCell: View {
     
+    @EnvironmentObject var userProfile : UserProfile
+    
     var news : News
     
     var body: some View {
@@ -24,8 +26,21 @@ struct NewsCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("\(news.news.source.name)")
-                    .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
+                HStack {
+                    Text("\(news.news.source.name)")
+                        .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
+                    
+                    Spacer()
+                    
+                    if userProfile.bookmarks.contains(where: {$0.news.url == news.news.url}) {
+                        Image(systemName: SystemIcons.bookmark.rawValue)
+                            .font(.caption)
+                            .foregroundColor(.cRed)
+                    }
+                    
+                    
+                }
+                
                 Text(news.news.title ?? "")
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
@@ -44,6 +59,6 @@ struct NewsCell: View {
 
 struct NewsCell_Previews: PreviewProvider {
     static var previews: some View {
-        NewsCell(news: News.sampleNews[0]).fixedSize()
+        NewsCell(news: News.sampleNews[0]).fixedSize().environmentObject(UserProfile())
     }
 }

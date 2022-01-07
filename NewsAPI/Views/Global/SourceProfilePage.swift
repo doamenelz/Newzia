@@ -125,6 +125,7 @@ struct SourceProfilePage: View {
                             .padding([.leading, .top])
                             
                             NewsListItems(allNews: viewModel.allNews, selectedNews: $viewModel.selectedNews, openURLView: $openURLView, hideFirst: false)
+                                .padding(.horizontal)
                                 .sheet(isPresented: $openURLView, onDismiss: {
                                     
                                 }, content: {

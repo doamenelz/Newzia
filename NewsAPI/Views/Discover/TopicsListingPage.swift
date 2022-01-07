@@ -63,12 +63,6 @@ struct TopicsListingPage: View {
                                     
                                 }
                             
-//                            NavigationLink(destination: {
-//                                TopicDetailsScreen(topic: topic)
-//                            }, label: {
-//                                TopicCell(label: topic)
-//                            })
-                            
                         }
                     }
                     
@@ -166,5 +160,6 @@ fileprivate struct TopicCell: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
+        .contentShape(Rectangle())
     }
 }

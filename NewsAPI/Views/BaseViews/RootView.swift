@@ -30,7 +30,7 @@ struct RootView: View {
                     //.zIndex(selectedTab == .search ? 2 : 1)
                     .opacity(selectedTab == .search ? 1 : 0)
                 
-                Text("Bookmark")
+                BookmarksLandingScreen()
                     .opacity(selectedTab == .bookmark ? 1 : 0)
                 
                 Text("Profile")

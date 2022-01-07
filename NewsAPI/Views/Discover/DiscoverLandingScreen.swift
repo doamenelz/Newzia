@@ -20,9 +20,7 @@ struct DiscoverLandingScreen: View {
                 ScrollView {
                     VStack (spacing: 20) {
                         DiscoverLandingHeader()
-                            .onTapGesture {
-                                print("Header tapped")
-                            }
+                           
                         
                         NavigationLink(destination: {
                             DiscoverCategoriesLanding()

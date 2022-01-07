@@ -22,7 +22,7 @@ struct ContentView: View {
             //DiscoverLandingScreen()
                 .environmentObject(userProfile)
                 .onAppear(perform: {
-                    //print(UserDefaults.standard.dictionaryRepresentation())
+                    print(UserDefaults.standard.dictionaryRepresentation())
                 })
         } else {
             ProductTourScreen()
