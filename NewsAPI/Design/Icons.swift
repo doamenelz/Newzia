@@ -59,6 +59,7 @@ enum SystemIcons : String {
     case bookmark = "bookmark.fill"
     case bell = "bell.fill"
     case bellBadge = "bell.badge.fill"
+    case topic = "number"
 }
 
 enum CustomIcons : String {

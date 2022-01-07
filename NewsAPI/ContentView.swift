@@ -12,6 +12,7 @@ struct ContentView: View {
     //@StateObject var apiUtility = APIUtility()
     @ObservedObject var userProfile = UserProfile()
     
+    @StateObject var appDataModel = AppDataModel()
    
     
     var body: some View {
@@ -40,3 +41,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+

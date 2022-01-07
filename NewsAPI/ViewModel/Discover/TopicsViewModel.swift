@@ -1,34 +1,37 @@
 //
-//  SearchPageViewModel.swift
+//  TopicsViewModel.swift
 //  NewsAPI
 //
-//  Created by Edem Ekeng on 2021-12-30.
+//  Created by Edem Ekeng on 2022-01-06.
 //
 
 import Foundation
+import Combine
 
-class SearchPageViewModel : ObservableObject {
+class TopicsViewModel : ObservableObject {
     
-    @Published var allNews = [News]()
+    @Published var allNews = News.sampleNews
     
     @Published var apiResponse : NewsCompletionResponse?
     
     @Published var selectedNews : News?
+        
+    func checkForMatch (topics: [String], topic: String) -> Bool {
+        if topics.contains(where: {$0.uppercased() == topic.uppercased()}) {
+           return true
+        } else {
+            return false
+        }
+    }
     
-    @Published var searchedText : String = ""
-    
-    @Published var searchInProgress : Bool = false
-    
-    @Published var printedSearch : String = ""
-    
-    func searchHeadlines (sources: [Source], country: String, language: String) {
+    func searchHeadlines (sources: [Source], language: String, topic: String) {
         
         let parameters = [
             "pageSize" : 100,
             "apiKey" : K.Keys.newsKey,
             "sortBy" : "popularity",
             "language" : language,
-            "q" : searchedText,
+            "q" : topic,
         ] as [String : Any]
         
         let apiUtil = APINewsUtility(_parameters: parameters, url: K.URLs.everything)
@@ -38,8 +41,6 @@ class SearchPageViewModel : ObservableObject {
             apiResponse = response
             
             print(apiUtil.parameters)
-            
-            searchInProgress = false
             
             if response.success {
                 

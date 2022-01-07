@@ -24,13 +24,13 @@ struct NewsCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("\(news.news.source.name) • \(news.category.rawValue)")
+                Text("\(news.news.source.name)")
                     .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
                 Text(news.news.title ?? "")
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                     .modifier(FontModifier(color: .darkGreySoft, size: .body, type: .bold))
-                Text("30 min ago")
+                Text(DateHelpers.formatToString(date: news.news.publishedAt ?? ""))
                     .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .light))
             }
             

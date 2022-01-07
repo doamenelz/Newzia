@@ -11,6 +11,8 @@ import SwiftUI
 
 class UserProfile : ObservableObject {
     
+    
+    
     //@Published var name : String = ""
     @Published var country : Country = Country.getCountryFromUD() ?? Country(name: "United States", code: "us")
     
@@ -71,7 +73,6 @@ class UserProfile : ObservableObject {
         
     }
     
-    //@Published var recentSearches = ["Indonesia", "global", "pandemic"]
     
     @Published var name : String = UserDefaults.standard.string(forKey: _UserProfileKeys.name) ?? "" {
         didSet {
@@ -127,6 +128,40 @@ enum _UserProfileKeys {
 }
 
     
+class AppDataModel : ObservableObject {
+    
+    var sourcesModel = SourcesModel()
+    
+    var countriesModel = CountryModel()
     
     
-
+    init () {
+        getAllAppSources()
+    }
+    
+    
+    func getAllAppSources () {
+        
+        do {
+            let decodedData = try JSONDecoder().decode([Source].self,
+                                                     from: sourcesModel.localData!)
+            
+            allAppSources = decodedData
+            
+        } catch {
+            print(error)
+            
+        }
+        
+        
+    }
+    
+    func getAllAppCountries () {
+        
+        
+        
+    }
+    
+    
+}
+    

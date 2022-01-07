@@ -116,7 +116,6 @@ class APINewsUtility : ObservableObject {
 
         AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).response { [self] response in
             
-            print(response.request)
             switch response.result {
                     
                 case .success(_):
@@ -138,16 +137,16 @@ class APINewsUtility : ObservableObject {
                             
                             print("I found \(articles.count)")
                             for article in articles {
-                                
                                 if article.source.id != "" {
                                     
-                                    let matchingSource = sources.first(where: {$0.id == article.source.id})
+                                    let matchingSource = allAppSources.first(where: {$0.id == article.source.id})
                                     
                                     if matchingSource != nil {
                                         let news = News(news: article, category: Category.parseCategoryToEnum(category: matchingSource!.category), iconURL: matchingSource!.url)
                                         allNews.append(news)
                                         
                                     } else {
+                                        
                                         let news = News(news: article, category: .general, iconURL: "")
                                         allNews.append(news)
                                         
@@ -158,29 +157,6 @@ class APINewsUtility : ObservableObject {
                                     let news = News(news: article, category: .general, iconURL: "")
                                     allNews.append(news)
                                 }
-                                
-                                
-                                
-//                                for source in sources {
-//
-//                                    if article.source.id != "" {
-//
-//                                        if article.source.id == source.id {
-//                                            let news = News(news: article, category: Category.parseCategoryToEnum(category: source.category), iconURL: source.url)
-//                                            allNews.append(news)
-//                                            print("I just added an article for a source i have")
-//
-//                                        }
-//                                        else {
-//                                            print("I just found an article for a source i dont have")
-////                                            let news = News(news: article, category: .general, iconURL: "")
-////                                            allNews.append(news)
-//                                        }
-//                                    } else {
-//                                        let news = News(news: article, category: .general, iconURL: "")
-//                                        allNews.append(news)
-//                                    }
-//                                }
                                 
                             }
                             

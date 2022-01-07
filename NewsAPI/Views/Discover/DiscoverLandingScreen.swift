@@ -36,8 +36,16 @@ struct DiscoverLandingScreen: View {
                             DiscoverCell(label: "Sources you follow", image: AppAssets.SplashScreen.productTour2, countLabel: "\(userProfile.sources.count) \(userProfile.sources.count > 1 ? "Sources" : "Source")")
                         })
                         
-                                                
-                      DiscoverCell(label: "#Topics you follow", image: AppAssets.SplashScreen.productTour3, countLabel: "\(userProfile.categories.count >= 1 ? "\(userProfile.categories.count) \(userProfile.categories.count > 1 ? "Categories" : "Category")" : "You currently do not follow any Topic")")
+                          
+                        NavigationLink(destination: {
+                            
+                            TopicsListingPage()
+                            
+                        }, label: {
+                            DiscoverCell(label: "#Topics you follow", image: AppAssets.SplashScreen.productTour3, countLabel: "\(userProfile.topics.count >= 1 ? "\(userProfile.topics.count) \(userProfile.topics.count > 1 ? "Topics" : "Topic")" : "You currently do not follow any Topic")")
+                            
+                        })
+                      
                         
                         
                         NavigationLink(destination: {

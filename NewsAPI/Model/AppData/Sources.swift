@@ -53,7 +53,6 @@ extension Source {
                 // Decode Note
                 let data = try decoder.decode([Source].self, from: data)
                 
-                print("Sources ---> \(data)")
                 return data
                 
             } catch {
@@ -134,4 +133,4 @@ class SourcesModel : ObservableObject {
     
 }
 
-
+var allAppSources = [Source]()

@@ -82,7 +82,6 @@ extension Category {
                 // Decode Note
                 let data = try decoder.decode([Category].self, from: data)
                 
-                print("Categories ---> \(data)")
                 return data
                 
             } catch {

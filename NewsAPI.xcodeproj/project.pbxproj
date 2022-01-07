@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490365872787CEB8007E8F7A /* TopicDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490365862787CEB8007E8F7A /* TopicDetailsScreen.swift */; };
+		490365892787CF90007E8F7A /* TopicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490365882787CF90007E8F7A /* TopicsViewModel.swift */; };
 		490B05362775718A00A761F7 /* NewsAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05352775718A00A761F7 /* NewsAPIApp.swift */; };
 		490B05382775718A00A761F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B05372775718A00A761F7 /* ContentView.swift */; };
 		490B053A2775718C00A761F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490B05392775718C00A761F7 /* Assets.xcassets */; };
@@ -98,6 +100,8 @@
 		490B0621277E463D00A761F7 /* NewsListItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0620277E463D00A761F7 /* NewsListItems.swift */; };
 		490B0623277E61F700A761F7 /* SearchPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0622277E61F700A761F7 /* SearchPageViewModel.swift */; };
 		490B0625277E631400A761F7 /* SearchPageLanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B0624277E631400A761F7 /* SearchPageLanding.swift */; };
+		493C163A2782BDE800887505 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C16392782BDE800887505 /* Dates.swift */; };
+		495F85A12783A3E000DD4C02 /* TopicsListingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F85A02783A3E000DD4C02 /* TopicsListingPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		490365862787CEB8007E8F7A /* TopicDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsScreen.swift; sourceTree = "<group>"; };
+		490365882787CF90007E8F7A /* TopicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewModel.swift; sourceTree = "<group>"; };
 		490B05322775718A00A761F7 /* NewsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		490B05352775718A00A761F7 /* NewsAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIApp.swift; sourceTree = "<group>"; };
 		490B05372775718A00A761F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 		490B0620277E463D00A761F7 /* NewsListItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItems.swift; sourceTree = "<group>"; };
 		490B0622277E61F700A761F7 /* SearchPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewModel.swift; sourceTree = "<group>"; };
 		490B0624277E631400A761F7 /* SearchPageLanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageLanding.swift; sourceTree = "<group>"; };
+		493C16392782BDE800887505 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		495F85A02783A3E000DD4C02 /* TopicsListingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsListingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +385,7 @@
 			children = (
 				490B056D2775790F00A761F7 /* Constants.swift */,
 				490B05F3277AA56C00A761F7 /* APIUtility.swift */,
+				493C16392782BDE800887505 /* Dates.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -561,6 +570,8 @@
 				490B0608277BF83000A761F7 /* DFollowingLandingScreen.swift */,
 				490B060D277CCB4A00A761F7 /* DiscoverSourcesCell.swift */,
 				490B0614277D766700A761F7 /* DiscoverCategoriesLanding.swift */,
+				495F85A02783A3E000DD4C02 /* TopicsListingPage.swift */,
+				490365862787CEB8007E8F7A /* TopicDetailsScreen.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -572,6 +583,7 @@
 				490B0618277D840000A761F7 /* CategoryNewsPageViewModel.swift */,
 				490B061E277E2E6200A761F7 /* CountryNewsViewModel.swift */,
 				490B0622277E61F700A761F7 /* SearchPageViewModel.swift */,
+				490365882787CF90007E8F7A /* TopicsViewModel.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -763,6 +775,7 @@
 				490B05D7277829B700A761F7 /* UserProfile.swift in Sources */,
 				490B05E42779643400A761F7 /* CountryCell.swift in Sources */,
 				490B0625277E631400A761F7 /* SearchPageLanding.swift in Sources */,
+				495F85A12783A3E000DD4C02 /* TopicsListingPage.swift in Sources */,
 				490B059D27762D8C00A761F7 /* SignUpViewModel.swift in Sources */,
 				490B05FA277AE12B00A761F7 /* NewsLandingViewModel.swift in Sources */,
 				490B05992775B38700A761F7 /* SignInViewModel.swift in Sources */,
@@ -785,6 +798,7 @@
 				490B05D02777D21600A761F7 /* ProfileSetupScreen.swift in Sources */,
 				490B05382775718A00A761F7 /* ContentView.swift in Sources */,
 				490B0566277575D400A761F7 /* Colors.swift in Sources */,
+				493C163A2782BDE800887505 /* Dates.swift in Sources */,
 				490B05B627765DBC00A761F7 /* CountrySetupScreen.swift in Sources */,
 				490B059B2775B78E00A761F7 /* SignInStack.swift in Sources */,
 				490B058B277596D400A761F7 /* Buttons.swift in Sources */,
@@ -794,6 +808,8 @@
 				490B061B277D8AC800A761F7 /* CountryNewsPage.swift in Sources */,
 				490B05FE277B8C3400A761F7 /* NewsLandingHero.swift in Sources */,
 				490B0613277D03FE00A761F7 /* SourceProfilePage.swift in Sources */,
+				490365892787CF90007E8F7A /* TopicsViewModel.swift in Sources */,
+				490365872787CEB8007E8F7A /* TopicDetailsScreen.swift in Sources */,
 				490B0607277BF39C00A761F7 /* DiscoverCell.swift in Sources */,
 				490B0605277BD9ED00A761F7 /* DiscoverLandingScreen.swift in Sources */,
 				490B05A52776380200A761F7 /* CodeVerificationScreen.swift in Sources */,
