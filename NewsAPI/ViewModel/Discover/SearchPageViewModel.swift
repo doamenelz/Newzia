@@ -21,12 +21,12 @@ class SearchPageViewModel : ObservableObject {
     
     @Published var printedSearch : String = ""
     
-    func searchHeadlines (sources: [Source], country: String, language: String) {
+    func searchHeadlines (sources: [Source], country: String, language: String, sortBy: String) {
         
         let parameters = [
             "pageSize" : 100,
             "apiKey" : K.Keys.newsKey,
-            "sortBy" : "popularity",
+            "sortBy" : sortBy,
             "language" : language,
             "q" : searchedText,
         ] as [String : Any]

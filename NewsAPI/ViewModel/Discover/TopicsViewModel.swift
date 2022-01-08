@@ -24,12 +24,12 @@ class TopicsViewModel : ObservableObject {
         }
     }
     
-    func searchHeadlines (sources: [Source], language: String, topic: String) {
+    func searchHeadlines (sources: [Source], language: String, topic: String, sortBy: String) {
         
         let parameters = [
             "pageSize" : 100,
             "apiKey" : K.Keys.newsKey,
-            "sortBy" : "popularity",
+            "sortBy" : sortBy,
             "language" : language,
             "q" : topic,
         ] as [String : Any]

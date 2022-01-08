@@ -19,7 +19,7 @@ enum SystemIcons : String {
     case plusCircle = "plus.circle.fill"
     case plus = "plus"
     case chevronUp = "chevron.up"
-    case categories = "chart.pie.fill"
+    case pieChart = "chart.pie.fill"
     case budgets = "briefcase.fill"
     case expenses = "creditcard.fill"
     case home = "house.fill"
@@ -60,6 +60,10 @@ enum SystemIcons : String {
     case bell = "bell.fill"
     case bellBadge = "bell.badge.fill"
     case topic = "number"
+    case globe = "globe.europe.africa"
+    case newspaper = "newspaper"
+    case sources = "doc.text.image"
+    case categories = "books.vertical"
 }
 
 enum CustomIcons : String {

@@ -22,6 +22,7 @@ struct NavigationHeader: View {
                 Image(systemName: SystemIcons.arrowRight.rawValue)
                     .padding([.trailing, .vertical])
                     .onTapGesture {
+                        
                         presentationMode.wrappedValue.dismiss()
                     }
                 
@@ -43,6 +44,35 @@ struct NavigationHeader_Previews: PreviewProvider {
     }
 }
 
+struct NavigationHeaderSheetStyle: View {
+    
+    var title : String?
+    
+    @Binding var dismiss : Bool
+    
+    var body: some View {
+        
+        ZStack {
+            
+            HStack {
+                
+                Image(systemName: SystemIcons.arrowRight.rawValue)
+                    .padding([.trailing, .vertical])
+                    .onTapGesture {
+                        dismiss.toggle()
+                    }
+                
+                Spacer()
+            }
+            
+            if title != nil {
+                Text(title!)
+                    .modifier(FontModifier(color: .cBlueDark, size: .body, type: .bold))
+            }
+            
+        }
+    }
+}
 
 
 

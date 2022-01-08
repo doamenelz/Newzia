@@ -83,7 +83,7 @@ struct TopicDetailsScreen: View {
                 }
                 .onAppear(perform: {
                     
-                    viewModel.searchHeadlines(sources: userProfile.sources, language: userProfile.language, topic: topic)
+                    viewModel.searchHeadlines(sources: userProfile.sources, language: userProfile.language, topic: topic, sortBy: userProfile.sortParameter)
                     
                     
                 })

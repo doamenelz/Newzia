@@ -38,6 +38,7 @@ struct BookmarksLandingScreen: View {
                 }
                 
                 IconTextField(icon: .search, placeHolder: "Search", text: $searchedText, isMandatory: false, errorMessage: "", checkEntry: false)
+                    .padding(.vertical, 10)
                 
                 ScrollView {
                     

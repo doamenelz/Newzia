@@ -169,7 +169,7 @@ extension SearchPageLanding {
         
         userProfile.recentSearches.append(viewModel.searchedText)
         
-        viewModel.searchHeadlines(sources: userProfile.sources, country: userProfile.country.code.lowercased(), language: userProfile.language)
+        viewModel.searchHeadlines(sources: userProfile.sources, country: userProfile.country.code.lowercased(), language: userProfile.language, sortBy: userProfile.sortParameter)
     }
     
 }

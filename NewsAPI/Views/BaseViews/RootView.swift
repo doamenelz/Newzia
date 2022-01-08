@@ -11,31 +11,25 @@ struct RootView: View {
     
     @EnvironmentObject var userProfile : UserProfile
     
-    @State private var selectedTab : TabSelectors = .home
+    @State private var selectedTab : TabSelectors = .person
     
     var body: some View {
 //
         NavigationView {
             
             ZStack {
-                //Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
-                
-                
-            NewsLandingScreen()
-              //Text("Home")
-                    //.zIndex(selectedTab == .home ? 2 : 1)
+                NewsLandingScreen()
                     .opacity(selectedTab == .home ? 1 : 0)
                 
                 DiscoverLandingScreen()
-                    //.zIndex(selectedTab == .search ? 2 : 1)
                     .opacity(selectedTab == .search ? 1 : 0)
                 
                 BookmarksLandingScreen()
                     .opacity(selectedTab == .bookmark ? 1 : 0)
                 
-                Text("Profile")
+                ProfileLanding()
                     .opacity(selectedTab == .person ? 1 : 0)
-
+                
                 VStack {
                     Spacer()
                     CustomTabBar(selection: $selectedTab)

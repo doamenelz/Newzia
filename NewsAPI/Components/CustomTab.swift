@@ -38,6 +38,14 @@ struct CustomTabBar: View {
     
     @Binding var selection : TabSelectors
     
+    var avatarURL: URL {
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0].appendingPathComponent("avatar.png")
+    }
+    
+    
+    @State private var image = UIImage(systemName: SystemIcons.person.rawValue)
+    
     var body: some View {
         
         HStack (spacing: 20) {
@@ -79,7 +87,7 @@ struct CustomTabBar: View {
             //Spacer()
             ZStack {
                 if userProfile.isSignedIn {
-                    Image(uiImage: userProfile.avatar)
+                    Image(uiImage: image!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 24, height: 24)
@@ -110,6 +118,9 @@ struct CustomTabBar: View {
             }
             
         }
+        .onAppear(perform: {
+            avatarURL.loadImage(&image)
+        })
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         //.padding()

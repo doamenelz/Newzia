@@ -9,13 +9,28 @@ import Foundation
 import Combine
 import SwiftUI
 
+
+/*
+ TODO:
+ Edit categories from Discover
+ Edit Sources from Sources
+ Sort Settings - Recent, Popularity
+ Change Countries
+ Language Settings - News Language
+ RemoveNotifications
+ 
+ 
+ 
+ 
+ 
+ */
 class UserProfile : ObservableObject {
     //@Published var name : String = ""
     @Published var country : Country = Country.getCountryFromUD() ?? Country(name: "United States", code: "us")
     
     @Published var categories : [Category] = Category.getCategoriesFromUD()
     
-    @Published var sources : [Source] = Source.getSourcesFromUD()
+    @Published var sources : [Source] = Source.getSourcesFromUD().sorted(by: {$0.name < $1.name})
     
     @Published var avatar = UIImage()
     
@@ -49,6 +64,8 @@ class UserProfile : ObservableObject {
         
     }
     
+    
+    
     @Published var topics : [String] = UserDefaults.standard.stringArray(forKey: _UserProfileKeys.topics) ?? [] {
         didSet {
             UserDefaults.standard.set(self.topics, forKey: _UserProfileKeys.topics)
@@ -70,6 +87,12 @@ class UserProfile : ObservableObject {
         
     }
     
+    @Published var sortParameter : String = UserDefaults.standard.string(forKey: _UserProfileKeys.sortParameter) ?? NewsSortType.publishedDate.rawValue {
+        didSet {
+            UserDefaults.standard.set(self.sortParameter, forKey: _UserProfileKeys.sortParameter)
+        }
+        
+    }
     
     @Published var name : String = UserDefaults.standard.string(forKey: _UserProfileKeys.name) ?? "" {
         didSet {
@@ -78,7 +101,7 @@ class UserProfile : ObservableObject {
         
     }
     
-    @Published var username : String = UserDefaults.standard.string(forKey: _UserProfileKeys.username) ?? "" {
+    @Published var username : String = UserDefaults.standard.string(forKey: _UserProfileKeys.username) ?? "doamenelz" {
         didSet {
             UserDefaults.standard.set(self.username, forKey: _UserProfileKeys.username)
         }
@@ -106,8 +129,25 @@ class UserProfile : ObservableObject {
     }
 
     @Published var bookmarks = News.getBookmarkFromUD()
+    
+    var avatarURL: URL {
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0].appendingPathComponent("avatar.png")
+    }
 }
 
+
+extension URL {
+    
+    func loadImage(_ image: inout UIImage?) {
+            if let data = try? Data(contentsOf: self), let loaded = UIImage(data: data) {
+                image = loaded
+            } else {
+                image = nil
+            }
+        }
+    
+}
 
 enum _UserProfileKeys {
     static let name = "name"
@@ -123,6 +163,7 @@ enum _UserProfileKeys {
     static let recentSearches = "recentSearches"
     static let language = "language"
     static let bookmarks = "bookmarks"
+    static let sortParameter = "newsSortParameter"
     
 }
 
