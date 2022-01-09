@@ -34,6 +34,7 @@ enum SystemIcons : String {
     case ellipsis = "ellipsis"
     case info =  "info.circle.fill"
     case person = "person.crop.circle"
+    case username = "person.fill"
     case recur = "arrow.2.squarepath"
     case clearText = "xmark.circle.fill"
     case update = "tray.and.arrow.up.fill"

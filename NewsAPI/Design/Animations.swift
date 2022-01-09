@@ -31,16 +31,10 @@ struct PulsatingLoad : View {
                 .clipShape(Circle())
                 .scaleEffect(wave ? 2 : 1)
                 .opacity(wave ? 0.1 : 1)
-                .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true).speed(0.8))
+                .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true).speed(0.8))
                 .onAppear() {
                     self.wave.toggle()
                 }
-//            Image(uiImage: image)
-//             .resizable()
-//             .foregroundColor(.cGreyMedium)
-//             .background(Color.cBlueMedium)
-//             .frame(width: K.Dimensions.frameWidth / 3, height: K.Dimensions.frameWidth / 3)
-//                       .clipShape(Circle())
         }
     }
 }

@@ -30,3 +30,30 @@ enum NewsSortType : String {
     
 }
 
+enum _UserProfileKeys {
+    static let name = "name"
+    static let country = "country"
+    static let sources = "sources"
+    static let username = "username"
+    static let avatar = "avatar"
+    static let isSignedIn = "isSignedIn"
+    static let preferredNewsLanguage = "preferredNewsLanguage"
+    static let email = "email"
+    static let categories = "categories"
+    static let topics = "topics"
+    static let recentSearches = "recentSearches"
+    static let language = "language"
+    static let bookmarks = "bookmarks"
+    static let sortParameter = "newsSortParameter"
+    
+}
+
+enum CategoryTypes : String {
+    case business = "Business"
+    case entertainment = "Entertainment"
+    case general = "General"
+    case health = "Health"
+    case science = "Science"
+    case sports = "Sports"
+    case technology = "Technology"
+}

@@ -95,9 +95,3 @@ class NewsLandingViewModel : ObservableObject {
     
 }
 
-struct NewsCompletion {
-    var success : Bool
-    var error : ErrorModel?
-}
-
-typealias NewsCompletionResponse = NewsCompletion

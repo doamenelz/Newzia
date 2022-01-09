@@ -9,21 +9,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-
-/*
- TODO:
- Edit categories from Discover
- Edit Sources from Sources
- Sort Settings - Recent, Popularity
- Change Countries
- Language Settings - News Language
- RemoveNotifications
- 
- 
- 
- 
- 
- */
 class UserProfile : ObservableObject {
     //@Published var name : String = ""
     @Published var country : Country = Country.getCountryFromUD() ?? Country(name: "United States", code: "us")
@@ -34,35 +19,8 @@ class UserProfile : ObservableObject {
     
     @Published var avatar = UIImage()
     
-    func setUserProfile (categories: [Category], sources: [Source], avatar: UIImage, username: String, country: Country) {
-        self.categories = categories
-        self.sources = sources
-        self.avatar = avatar
-        self.username = username
-        self.country = country
-        
-        Source.persistSource(sources: sources)
-        Category.persistCategories(categories: categories)
-        Country.persistCountry(country: country)
-        
-        if let data = avatar.pngData() {
-            // Create URL
-            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let url = documents.appendingPathComponent("avatar.png")
-
-            do {
-                // Write to Disk
-                try data.write(to: url)
-
-                // Store URL in User Defaults
-                UserDefaults.standard.set(url, forKey: "background")
-
-            } catch {
-                print("Unable to Write Data to Disk (\(error))")
-            }
-        }
-        
-    }
+    
+    
     
     
     
@@ -136,72 +94,48 @@ class UserProfile : ObservableObject {
     }
 }
 
-
-extension URL {
+extension UserProfile {
     
-    func loadImage(_ image: inout UIImage?) {
-            if let data = try? Data(contentsOf: self), let loaded = UIImage(data: data) {
-                image = loaded
-            } else {
-                image = nil
+    func persistAvatar () {
+        if let data = avatar.pngData() {
+            // Create URL
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let url = documents.appendingPathComponent("avatar.png")
+
+            do {
+                // Write to Disk
+                try data.write(to: url)
+
+                // Store URL in User Defaults
+                UserDefaults.standard.set(url, forKey: "background")
+
+            } catch {
+                print("Unable to Write Data to Disk (\(error))")
             }
         }
+        
+        
+    }
+    
+    
+    func setUserProfile (categories: [Category], sources: [Source], avatar: UIImage, username: String, country: Country, name: String) {
+        self.categories = categories
+        self.sources = sources
+        self.avatar = avatar
+        self.username = username
+        self.country = country
+        self.name = name
+        
+        Source.persistSource(sources: sources)
+        Category.persistCategories(categories: categories)
+        Country.persistCountry(country: country)
+        
+        persistAvatar()
+        
+    }
     
 }
 
-enum _UserProfileKeys {
-    static let name = "name"
-    static let country = "country"
-    static let sources = "sources"
-    static let username = "username"
-    static let avatar = "avatar"
-    static let isSignedIn = "isSignedIn"
-    static let preferredNewsLanguage = "preferredNewsLanguage"
-    static let email = "email"
-    static let categories = "categories"
-    static let topics = "topics"
-    static let recentSearches = "recentSearches"
-    static let language = "language"
-    static let bookmarks = "bookmarks"
-    static let sortParameter = "newsSortParameter"
-    
-}
 
-    
-class AppDataModel : ObservableObject {
-    
-    var sourcesModel = SourcesModel()
-    
-    var countriesModel = CountryModel()
-    
-    
-    init () {
-        getAllAppSources()
-    }
-    
-    
-    func getAllAppSources () {
-        
-        do {
-            let decodedData = try JSONDecoder().decode([Source].self,
-                                                     from: sourcesModel.localData!)
-            
-            allAppSources = decodedData
-            
-        } catch {
-            print(error)
-            
-        }
-        
-        
-    }
-    
-    func getAllAppCountries () {
-        
-        
-        
-    }
-    
-    
-}
+
     

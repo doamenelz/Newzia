@@ -133,4 +133,4 @@ class SourcesModel : ObservableObject {
     
 }
 
-var allAppSources = [Source]()
+

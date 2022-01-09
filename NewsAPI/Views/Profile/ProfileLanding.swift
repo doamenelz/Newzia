@@ -28,6 +28,8 @@ struct ProfileLanding: View {
     
     @State private var toggleSources : Bool = false
     
+    @State private var toggleBioEdit : Bool = false
+    
     var body: some View {
         
         NavigationView {
@@ -68,50 +70,64 @@ struct ProfileLanding: View {
                             Spacer()
                         }
                         .padding(.vertical)
-                        
-                        ProfileSettingsCell(label: "Newsfeed", icon: .newspaper, type: .newsFeed)
-                            .onTapGesture {
-                                newsFeedSort.toggle()
-                            }
-                            .sheet(isPresented: $newsFeedSort, onDismiss: {
-                                
-                            }, content: {
-                                NewsSortConfigurationScreen(dismiss: $newsFeedSort)
-                            })
-                        
-                        ProfileSettingsCell(label: "Sources", icon: .sources, type: .sources)
-                            .onTapGesture {
-                                toggleSources.toggle()
-                                
-                            }
-                            .sheet(isPresented: $toggleSources, onDismiss: {
-                                
-                            }, content: {
-                                ProfileSourcesScreen(dismiss: $toggleSources)
-                            })
+                        .onTapGesture {
                             
-                        
-                        ProfileSettingsCell(label: "Categories", icon: .categories, type: .categories)
-                            .onTapGesture {
-                                toggleCategories.toggle()
-                            }
-                            .sheet(isPresented: $toggleCategories, onDismiss: {
-                                
-                            }, content: {
-                                ProfileCategoriesList(dismiss: $toggleCategories)
-                            })
+                            toggleBioEdit.toggle()
+                        }
+                        .sheet(isPresented: $toggleBioEdit, onDismiss: {
                             
+                        }, content: {
+                            EditBioScreen(dismiss: $toggleBioEdit)
+                        })
                         
-                        ProfileSettingsCell(label: "Country", icon: .globe, type: .country)
-                            .onTapGesture {
-                                toggleCountry.toggle()
+                        //MARK: Cell Outlets
+                        Group {
+                            ProfileSettingsCell(label: "Newsfeed", icon: .newspaper, type: .newsFeed)
+                                .onTapGesture {
+                                    newsFeedSort.toggle()
+                                }
+                                .sheet(isPresented: $newsFeedSort, onDismiss: {
+                                    
+                                }, content: {
+                                    NewsSortConfigurationScreen(dismiss: $newsFeedSort)
+                                })
+                            
+                            ProfileSettingsCell(label: "Sources", icon: .sources, type: .sources)
+                                .onTapGesture {
+                                    toggleSources.toggle()
+                                    
+                                }
+                                .sheet(isPresented: $toggleSources, onDismiss: {
+                                    
+                                }, content: {
+                                    ProfileSourcesScreen(dismiss: $toggleSources)
+                                })
                                 
-                            }
-                            .sheet(isPresented: $toggleCountry, onDismiss: {
+                            
+                            ProfileSettingsCell(label: "Categories", icon: .categories, type: .categories)
+                                .onTapGesture {
+                                    toggleCategories.toggle()
+                                }
+                                .sheet(isPresented: $toggleCategories, onDismiss: {
+                                    
+                                }, content: {
+                                    ProfileCategoriesList(dismiss: $toggleCategories)
+                                })
                                 
-                            }, content: {
-                                ProfileCountrySetUp(dismiss: $toggleCountry)
-                            })
+                            
+                            ProfileSettingsCell(label: "Country", icon: .globe, type: .country)
+                                .onTapGesture {
+                                    toggleCountry.toggle()
+                                    
+                                }
+                                .sheet(isPresented: $toggleCountry, onDismiss: {
+                                    
+                                }, content: {
+                                    ProfileCountrySetUp(dismiss: $toggleCountry)
+                                })
+                            
+                        }
+                        
                         
                     }
                     .padding()
@@ -124,6 +140,7 @@ struct ProfileLanding: View {
             }
             .hideNavigationBar()
             .onAppear(perform: {
+                
                 avatarURL.loadImage(&image)
             })
         }
@@ -137,124 +154,5 @@ struct ProfileLanding_Previews: PreviewProvider {
     static var previews: some View {
         ProfileLanding().environmentObject(UserProfile()).preferredColorScheme(.dark)
     }
-}
-
-struct ProfileSourcesScreen: View {
-    
-    @EnvironmentObject var userProfile : UserProfile
-    
-    @State private var searchedText : String = ""
-    
-    @State private var isLoading : Bool = false
-    
-    @State private var toggleAddSources : Bool = false
-    
-    @State private var showFollowing : Bool = true
-    
-    @State private var sources = [Source]()
-    
-    @Binding var dismiss : Bool
-    
-    var body: some View {
-        
-        NavigationView {
-          
-            ZStack {
-                
-                Color.whiteBlueDark.edgesIgnoringSafeArea(.all)
-                
-                VStack (alignment: .leading) {
-                    NavigationHeaderSheetStyle(dismiss: $dismiss)
-                        .padding(.horizontal)
-                    
-                    HStack {
-                        VStack (alignment: .leading) {
-                            Text("Sources")
-                                .modifier(FontModifier(color: .darkGreySoft, size: .large, type: .bold))
-                            Text("\(userProfile.sources.count) Following")
-                                .modifier(FontModifier(color: .darkGreySoft, size: .label, type: .regular))
-                        }
-                        
-                        Spacer()
-
-                    }
-                    .padding(.horizontal)
-                .padding(.bottom, 10)
-                    
-                    IconTextField(icon: .search, placeHolder: "Search for sources", text: $searchedText, isMandatory: false, errorMessage: "", checkEntry: false).padding(.horizontal)
-                    
-                    HStack (spacing: 10) {
-                        
-                        FilterTab(label: "Following", isSelected: showFollowing)
-                            .onTapGesture {
-                                showFollowing.toggle()
-                                sources = sortBy().sorted(by: {$0.name < $1.name})
-                                
-                            }
-                        
-                        FilterTab(label: "Not Following", isSelected: !showFollowing)
-                            .onTapGesture {
-                                showFollowing.toggle()
-                                sources = sortBy().sorted(by: {$0.name < $1.name})
-                            }
-                        
-                        Spacer()
-                    }
-                    .padding([.leading, .top])
-                    
-                    
-                    ScrollView {
-                        LazyVStack (spacing: 20) {
-                            
-                            ForEach(searchedText == "" ? sources : sources.filter({$0.name.uppercased().contains( searchedText.uppercased())}), id: \.self) { source in
-                                
-                                NavigationLink(destination: {
-                                    SourceProfilePage(source: source)
-                                }, label: {
-                                    DiscoverSourcesCell(source: source)
-                                        .padding(.all, 10)
-                                })
-                                
-                            }
-                            
-                        }
-                        .padding()
-                        .padding(.bottom, 60)
-                        
-                    }
-                                    
-                }
-                .onAppear(perform: {
-                    sources = sortBy()//userProfile.sources
-                })
-                
-                
-                
-            }
-            .hideNavigationBar()
-            
-        }
-        
-    }
-}
-
-extension ProfileSourcesScreen {
-    
-    func sortBy () -> [Source] {
-        
-        if showFollowing {
-            
-            return userProfile.sources//.sorted(by: {$0.name < $1.name})
-            
-        } else {
-            
-            return allAppSources.filter{ !userProfile.sources.contains($0) }
-            
-        }
-        
-        
-    }
-    
-    
 }
 

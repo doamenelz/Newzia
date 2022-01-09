@@ -11,7 +11,7 @@ struct RootView: View {
     
     @EnvironmentObject var userProfile : UserProfile
     
-    @State private var selectedTab : TabSelectors = .person
+    @State private var selectedTab : TabSelectors = .home
     
     var body: some View {
 //

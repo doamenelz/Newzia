@@ -25,17 +25,10 @@ class AccountSetupViewModel : ObservableObject {
     
     @Published var avatar : UIImage?
     
-    @Published var name : String = "Edem Ekeng"
+    @Published var name : String = ""
     
     @Published var persistCompleted : Bool = false
     
-    func persistUserProfile () {
-        
-        
-        
-        
-        
-    }
     
 }
 

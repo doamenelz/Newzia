@@ -59,11 +59,6 @@ extension Country {
     
 }
 
-struct CountryVM : Identifiable {
-    let id = UUID()
-    let country : Country
-}
-
 class CountryModel : ObservableObject {
     
     @Published var localData : Data?

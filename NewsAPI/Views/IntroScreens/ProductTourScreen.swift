@@ -32,7 +32,8 @@ struct ProductTourScreen: View {
                         .fullScreenCover(isPresented: $goToSignInOptions, onDismiss: {
                             
                         }, content: {
-                            LoginOptionScreen(dismiss: $goToSignInOptions)
+                            CountrySetupScreen()
+                            //LoginOptionScreen(dismiss: $goToSignInOptions)
                         })
                 }
                 .padding(.bottom)

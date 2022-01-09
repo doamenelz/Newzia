@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //@StateObject var apiUtility = APIUtility()
     @ObservedObject var userProfile = UserProfile()
     
     @StateObject var appDataModel = AppDataModel()
@@ -19,18 +18,13 @@ struct ContentView: View {
         
         if userProfile.isSignedIn {
             RootView()
-            //DiscoverLandingScreen()
                 .environmentObject(userProfile)
                 .onAppear(perform: {
                     print(UserDefaults.standard.dictionaryRepresentation())
                 })
         } else {
             ProductTourScreen()
-            //DiscoverLandingScreen()
                 .environmentObject(userProfile)
-                .onAppear(perform: {
-                    //print(UserDefaults.standard.dictionaryRepresentation())
-                })
         }
         
     }

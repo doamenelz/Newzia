@@ -28,7 +28,7 @@ struct ProfileSetupScreen: View {
             
             VStack (spacing: 30) {
                 
-                    NavigationHeader(title: "Profile Information")
+                NavigationHeader(title: "Profile Information")
                     .disabled(submit ? true : false)
                 
                 
@@ -59,21 +59,25 @@ struct ProfileSetupScreen: View {
                     
                 }
                 
-                
-                IconTextField(icon: .person, placeHolder: "Username", text: $viewModel.username, isMandatory: true, errorMessage: "Please provide a user name", checkEntry: checkEntry)
-                    .sheet(isPresented: $showImagePicker, onDismiss: {
-                        
-                    }, content: {
-                        ImagePicker(selectedImage: $viewModel.avatar)
-                    })
-                    .disabled(submit ? true : false)
+                //MARK: Outlets
+                Group {
+                    IconTextField(icon: .person, placeHolder: "Name", text: $viewModel.name, isMandatory: true, errorMessage: "Please enter a name", checkEntry: checkEntry)
+                    
+                    IconTextField(icon: .username, placeHolder: "Username", text: $viewModel.username, isMandatory: true, errorMessage: "Please provide a user name", checkEntry: checkEntry)
+                        .sheet(isPresented: $showImagePicker, onDismiss: {
+                            
+                        }, content: {
+                            ImagePicker(selectedImage: $viewModel.avatar)
+                        })
+                        .disabled(submit ? true : false)
+                }
                 
                 Spacer()
                 
                 Button(action: {
                     
                     if viewModel.avatar != nil {
-                        withAnimation (.linear(duration: 0.5)) {
+                        withAnimation {
                             submit.toggle()
                         }
                     }
@@ -94,10 +98,10 @@ struct ProfileSetupScreen: View {
                     .onAppear(perform: {
                         
                         DispatchQueue.main.async {
-                            userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!)
+                            
+                            userProfile.setUserProfile(categories: viewModel.selectedCategories, sources: viewModel.selectedSources, avatar: viewModel.avatar!, username: viewModel.username, country: viewModel.selectedCountry!, name: viewModel.name)
                             
                             userProfile.isSignedIn = true
-                            
                             
                         }
                         
